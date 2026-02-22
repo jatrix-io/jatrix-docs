@@ -1,6 +1,19 @@
 .hero {
   padding: 4rem 0;
   text-align: center;
+  position: relative;
+}
+
+.dream {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+  object-position: center 15%;
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 .buttons {

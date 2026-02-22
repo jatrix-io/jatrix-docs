@@ -79,8 +79,17 @@ const config: Config = {
             { label: "API Reference", to: "/docs/api" },
           ],
         },
+        {
+          title: "ProCode Ind",
+          items: [
+            {
+              label: "procodeind.com",
+              href: "https://procodeind.com",
+            },
+          ],
+        },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Jatrix. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} ProCode Ind`,
     },
     prism: {
       additionalLanguages: ["json", "bash", "go", "javascript"],

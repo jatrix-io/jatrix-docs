@@ -13,6 +13,12 @@ export default function Home(): JSX.Element {
       description="Jatrix — SaaS Governance Engine for identity, multi-tenancy, and authorization"
     >
       <main className={clsx(styles.hero, "hero hero--primary")}>
+        <img
+          src="/img/dream.png"
+          alt=""
+          className={styles.dream}
+          aria-hidden
+        />
         <div className="container">
           <Heading as="h1" className="hero__title">
             {siteConfig.title}
