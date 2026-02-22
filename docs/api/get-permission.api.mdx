@@ -1,0 +1,49 @@
+---
+id: get-permission
+title: "Get permission by ID"
+description: "Get permission by ID"
+sidebar_label: "Get permission by ID"
+hide_title: true
+hide_table_of_contents: true
+api: eJzlV99v2zYQ/lcO99QCtJ0UXbH6acGSFS42JEgydEAcNIx0tplSpEqevHqC/vfhKNlW7HRNsu5pT7HI4913992v1OhLCpqNd5McxzgnPqNQmBiNd6iQ9Tzi+Aq3hxGvFZY66IKYglzW6HRBOEYf5pMcFRqHYyw1L1BhoM+VCZTjmENFCmO2oELjuEZelfIocjBujgpnPhSacYxVZXJsFOYUs2BKwYZjPA1z7cxfCSpMjrFRG7tl8HmV8X9n+6w1sGPWfDd7PaV/DM7pc0WRB5PjtfoF6ZzCPQMzbeO/8ehna8jxIFZlaQ3lEFqjMDmGmQ+Q+RDIplgP4SRbeMrBOAgUS+8iQUGsh9hcC6T2KAqIVwcH8mcneP18yrxjcixSWkxnycboLopove+Pv72jjFEJxyUFNq2hXPMjpEz+qMh06fPxkeKfaLUvtxvgfT2uslbfWmqTo1GYBdJM+UfN/2g210wDNgWJjarMn/wmJ0tPerOHtVHIhuWzT2ajUNLg2zR0ufWo+O7mab8cYBZ8sclUH2BOTnoXJVoEemRdlI/28r6lycXp4Mc3B4ewVdR3/Ddx9eFInHclgE0jAq8PXu8XwTlFX4WMwHmGma9c/v2KgULw4dtimc/pwcQtKEY9f/guJ9bGxn3tydX/M/8nKepNy/l9Ve+IodykB9yuIPXygnjhuyErQZKhMcbR8nDke7Mtjuo0R5tR15fiqN4MuGa01RtHtckbVBgpLNeTuApWBgZzGcejUU6FH95pDubL0Pg9l4+p8HB0NoFbLdl7LaqyKhheJV23pAOFo0pgXl33ry8kM1ty+0KbuIt97KaTfLdCqLofv6zZeP/hcg/U+w+XoLOMYgT2n8jBi/OLVz+8eTmE01vWxsHSaDg7vbgEiZyueDFKcsPEjnEzn4B0LL1PzouT+4baKxNBw4XWF/DOLyk47TKCEzc3jtIoNDk5NrxSUFSWzYBJRFYKxLQPHWtq6rTLoSNqYGlJFqS+g7dDuFyYmAJdaKfnFOEe4Wr9LCpI2jmqqasihaggeEsisaVdgVhKoCwV5DgOp27qjqzdzOcIM2+t/xNuapBRqdLAHkMN21pU20SHBpqbIfxqIm9VTJ1xma1ygps07Us9Ny4BFj3WFIYV+NksEitgz9omJaksIlSRpu6mhtSb5IF0H4GRWo2Crq9A00KTp1PZDySRW3oOhwfDg65J6iw1yW5FaolDhVRoI+l+R7NZoBXF0jiyw8O3b1/9NJe7YeaLlBalj1xo11PylRp9eIgzfeFRabVJUy/VWN3V7xUuD1HhPUJR4Xi9C6+plbP+ntojVK5MLmv1wkcWlXUtFfl7sE0jx58rClKS1wqXOph2Ml/VmJsov7fr4A76zXzBF+fd5vgSdvdo9bCT3aF2K2FF20q+sNt+uk1f1tZnYejt088yvw3ksyE8z7BsgNeNWm/kTyPhu+zcX4Hdwtv552EDX6LUShxlGZXcu9tbPKTPbybVu5NLbJq/AfaU3hA=
+sidebar_class_name: "get api-method"
+info_path: docs/api/jatrix-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get permission by ID"}
+></Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/organizations/{orgId}/products/{productId}/permissions/{id}"}
+  context={"endpoint"}
+></MethodEndpoint>
+
+Get permission by ID
+
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./get-permission.ParamsDetails.json")}
+></ParamsDetails>
+
+<RequestSchema
+  {...require("./get-permission.RequestSchema.json")}
+></RequestSchema>
+
+<StatusCodes {...require("./get-permission.StatusCodes.json")}></StatusCodes>

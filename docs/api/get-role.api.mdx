@@ -1,0 +1,45 @@
+---
+id: get-role
+title: "Get role by ID"
+description: "Get role by ID"
+sidebar_label: "Get role by ID"
+hide_title: true
+hide_table_of_contents: true
+api: eJzlVttuGzcQ/ZXBPCUAtbKNNGj0VKN2DQUtHNguUsAyYnp3JNHhkhtyVom62H8vhruSdXEbx02f+iQtOZzbOXNp0FcUNBvvxgWOcEZ84S2hQtaziKNrlM+INworHXRJTEGOG3S6JByhD7NxgQqNwxFWmueoMNCn2gQqcMShJoUxn1OpcdQgLyt5FDkYN0OFUx9KzTjCujYFtgoLinkwlfiDIzwPM+3Mn8k9GJ9gq9Z2q+CLOuf/zva7zsCOWfPd7G0o/WNwQZ9qijwYn6zUz0kXFLYMTLWN/yain60hx4NYV5U1VEDojML4BKY+QO5DIJtyncFpPvdUgHEQKFbeRYKSWGfY3ohL3VEUJ44ODuRn21TPodw7Jsdyr8VonrQP76MINfuR+Lt7yhmVoFtRYNOZKDQ/QcoUT8pJT5wPTxTvINoVbBXmgTRT8UHzP+opNNOATUnypq6Kb35TkKVveqPQ1dbqO0sdJ9tWIRuWzw6XVqFg+fWM9gR5Uqp2ybbJaZgGX67p5gPMyEnToZRhcTqyLqsnx7dtaXx5Pvjx9cEhPCjaDPk3CXU3Bxc9g7Ft5erVwatHOEzR1yEncJ5h6mtXfD9GUwg+fF0s98Xj5CspRj17/K4g1sbGfe0p1P8z8qcp622H+baqM2II3hLcLSE14ZJ47vuJKOmRbj/C4eJw6DeGUhw2aQC2w76txGGznkztUDTGYWOKFhVGCovV8KyDlR7PXMXRcFhQ6bN7zcF8yYzfC/OESg/H78Zwp4WxN6Iqr4PhZdJ1RzpQOK7FweubzetLYWMH6KbQOtdiH/uBIt+dEKr+zy8rBN6+v9pz6u37K9B5TjEC+4/k4MXF5dEPr19mcH7H2jhYGA3vzi+vQHKma54Pk1yWEDFu6pMjPTJvU/AS5L6h7spE0HCp9SWc+QUFp11OcOpmxlGaXqYgx4aXCsrashkwichSgZj2ocdLTZx2BfQQDSwtyILUdPA2g6u5iSnRpXZ6RhG2oFarZ1FB0s5RTVwdKUSVuCMSFEoTYyculpJTlkpyHLOJm7hja9cjNcLUW+s/w20DMuNUmrEjaOCh/tQDuaGF9jaDX03kBxUTZ1xu64LgNg3oSs+MSw6LHmtKwwr8dBqJFbBnbZOSVAoR6kgTd9tA6kfyQDqOuJHai4K+l0DbuSZPJw4VCpE7eA6zg+ygb4w6T42x32o64FAhldoI3e9pOg20pFgZRzY7fPPm6KeZ3GW5LxMtKh+51G5DyV5dbpFjzWSmLzysrDYujVmprqav2WtcHKLCLShR4Wi1uK5AlbPNpTIhKoemkO137iOLsqaRKvw92LaV4081BSnDG4ULHUw3da8bLEyU/w9b247f6zmCLy76Be8l7K676vHw+kPtloKEtrV8ocKPtFwv5LJdPsuHjbX3WeYfUvhsF55nWNa1m1atFudvA+G7rMZ/43bn3s6Ov3ZfstRJHOc5Vbxxt7dgSG9fz6Wz0yts278AQUe1/w==
+sidebar_class_name: "get api-method"
+info_path: docs/api/jatrix-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get role by ID"}
+></Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/organizations/{orgId}/products/{productId}/roles/{id}"}
+  context={"endpoint"}
+></MethodEndpoint>
+
+Get role by ID
+
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails {...require("./get-role.ParamsDetails.json")}></ParamsDetails>
+
+<RequestSchema {...require("./get-role.RequestSchema.json")}></RequestSchema>
+
+<StatusCodes {...require("./get-role.StatusCodes.json")}></StatusCodes>

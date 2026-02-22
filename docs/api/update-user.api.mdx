@@ -1,0 +1,45 @@
+---
+id: update-user
+title: "Update user"
+description: "Update user"
+sidebar_label: "Update user"
+hide_title: true
+hide_table_of_contents: true
+api: eJztWFFv2zYQ/isEn1qAtpOiK1Y/NWuyzcWGFImLDoiNhJHONlOKVMmjE0/Qfx+OlC3HdlI3y7CHzS+WqOPd8e6740dW3JbgJCprBjnv81DmEuGTB8cFRzn1vH/B6dXzseCldLIApLf+RcWNLID3uXXTQc4FV4b3eSlxxgV38DUoBznvowsguM9mUEjerzguSprk0Skz5YJPrCskkumgcl4LnoPPnCrJJd7np24qjfozesgGx7wWK7sIRhr850wPo/4No+rZzK0p/aNzBl8DeOwMjpfqZyDzmIXWwERq/3cW9F4rMNjxoSy1gpy5ZJQNjtnEOpZZ50DHSHfZSTazkDNlmANfWuOBFYCyy+txcgk8/mTzBbmRWYNgkB4lqc6ijt6NJ6vVtr/2+gYy5IKXjtCHCjx9hUIq/eiykgStS/lSy8Vlit/mjJqQ6v2tdfmj6lZCteAeJQa/SxxMKKgKZIZqDjE9q0cffAkmh5yPa8Gz4NEWlxLRqeuA4LfXXNeCo0JNQ59WtTYwZaBv9HUZ7jj51cEB/d1PI81gqVAJjM8U/VziHlLq8YgucWfXqvZyzzmpnPeVhjsEZ6R+QN4EreU1hZmqshY8eBJ/AC2Pw2mHtn2humPqcwBNS4+X2k6VuZT4qBsEkg6qAna5kjkgDO2vg+KYcPddc3LQ8F1ztnxdrxoP7ijLbDBIuqkpfRu2TcPaC1ybXXO9ObOJs8Wqb1rHpmBo+4SEYFWAR1mUey/zvqXB+WnnxzcHh6xVtL7y32mpm6E4a9pF0z1e72oYAzOXWlEzpzbzbB0DnLPu22KZzXdXXQHey+kDFQkold7ZQP/jST+JUV9m+/V2ts/A2+AyYMYim9hgnnGT+D/l/27Ktyhd4hAsJMJeAM5snrhpRuQ0ctQ+780Pe+tbsu9VkbTXvbTp+l61JNN1j3T5XqXymvYdcPMl3Q9OEy9FLH2/18uhsN0biU7ddZXdWuMxFJYdfRywa0nNaUyqsuAULqKua5AO3FEg9y7G65/PCYopm+tCq0CTfd6QYHpPQlw0Dz8vw//h83DLqQ+fh0xmGXjP0H4Bw16cnb/64c3LLju9RqkMmyvJPp6eDxlFTAac9aJcN6aDiuWsZb4nd7IoNawx10gy3kEa72a24JvUooVJS1DbsSU1aBnALkZJrigzsTEmDUI+xDxQvLfXnD4pzyQ7l/Kc/WLnRIVMBuzETJWBSP5VDgYVLgQrgkbViXjIFoJRFKxrgCNGRpqclc7mIcOOhjloRr3FWd1lw5nyMeeFNHIKnt3DnFhO84I1sBMjE9EmmLMaSAJcobxP4mQpOqWhAIO+OzIjc6T16kTi2cRqbW/ZVcWIvop4ROmzirV9QLRFxmpWX3XZb8pjq2JklMl0yIFdxfNNKafKRIdJj1aFQsHsZOIBBUOLUkclsSQ91d3IXFUs9kWaQJ2P3IhtTrCmp7E6uUZTR4YLTjWV0nPYPegeNA1aZrFBN1BJieMrsslvYDJxsABfKgO6e/j27at3U/oWoUawKK3HQpo1Jff7wz1krCoK4Q57pZbKRILnIrFNneOCzw/5fTrvueD95ZG/ySMNrZ3GY05pTOV0azCzHklVVVEv+OR0XdPw1wCOmsFY8Ll0KrG9i4oqhp7b8+6G16utjL84a47GL9nmNYHYvbhmUJoFJUHqQG9c8C+wWF1k0Ln8ST609wVPsr4K4JMdeJpdOk/RoaK5cPi+FDzLlcIDbif3Nu5GVu5TlJLE++RNZ0hKWoktntPOOMoyKPFR2fHabvrxaPj+V9phmvuOItIb7uQtXc/I2xRNW6byIBpCYxXX0kxDpDs8KaXfX0iysxk=
+sidebar_class_name: "patch api-method"
+info_path: docs/api/jatrix-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update user"}
+></Heading>
+
+<MethodEndpoint
+  method={"patch"}
+  path={"/v1/organizations/{orgId}/tenants/{tenantId}/users/{id}"}
+  context={"endpoint"}
+></MethodEndpoint>
+
+Update user
+
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails {...require("./update-user.ParamsDetails.json")}></ParamsDetails>
+
+<RequestSchema {...require("./update-user.RequestSchema.json")}></RequestSchema>
+
+<StatusCodes {...require("./update-user.StatusCodes.json")}></StatusCodes>

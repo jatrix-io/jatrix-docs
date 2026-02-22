@@ -1,0 +1,49 @@
+---
+id: create-tenant
+title: "Create tenant"
+description: "Create tenant"
+sidebar_label: "Create tenant"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV99vGzcM/lcEPrWAfE6KrljvaVmTDS42pEgydEBsNModbSvVSVeJcuoe7n8fqDv/ztp0K9CHLS/xSSL5ieRHkQ24Gr0i7eyohBwKj4rwCq2yBBJIzQLk19AtBJhIqJVXFRJ63mjAqgohB+dnoxIkaAs51IrmIMHjh6g9lpCTjyghFHOsFOQN0LJmoUBe2xlImDpfKYIcYtQltBJKDIXXNcOCHM79TFn9KaEUo1No5drun4ML/BAx0GB0ujI/R1Wi3wEwVSb8GwSvjEZLgxDr2mgshe+MitGpmDovCuc9moQvE2fF3GEptBUeQ+1sQFEhqQzaSQcJA/3syiXD2HdR4SyhJd5SbKpIOod3gVE0h/jd7R0WtHPV6841EoKJfLNAimIXOc+xJo2BNXQO3PdE28s9uNFpesB7aGPFllVBepFsx1CjLbFLiX550rYSSJNh2VdbiTaydSRoW95f+SzZeXZ0zP92Y9HJiC5T2cA/dtquQ0pFjzily0elj9tK2XePlPkeEZE948t3ij4LslSEA9IVst1Yl18tU6LBr5KRYKMx6pbThdmxnT19gWolMLW+HLWedo+KxD73t0uMmHpXrdnvvJih5fKJKYAMO5Cq6kffcNfS6PJ88OOLo2OxUbR96d/5qodeuOgZ0xPo+dHRIWdGdqGM5qLETPtmlEHvnf/yscKVDyd2hSGo2cN7JZLSJhxqT7f8L4f9LHl9Fe3nh9G+wOCiL1BYR2Lqov2GVfL/kH/fkB+2Jql+C1q1bBXS3HErV7uQ3MPNWA7DxfFw+1EKwyb1bO2Q+t5OQkC/WPV10RtupYjqkA+HJVYuu1Pk9cdMu4PrnGLlxMmbkbhVXIcmrKqIXtMy6bpF5dGfRAZyPdnevuSs6wK3fWjtU7YPfd/G390hkP2PX1aefv326gDU67dXQhUFhiDIvUcrnlxcPvvhxdNMnN+S0lYstBJvzi+vBPtGRZoP07kseZ55cbFp1s4+qqo2uGmcNuHuXuet7/5RXr29LT+4U5du1YfzdfIke+wQdbelg1DiUqlL8atboLfKFijO7ExbTB2nLtGSpqUUVTSkBymIxVIKvofzfZDl2Cpbitq7MhY0MLhAI7gQeGcycTXXIUWtUlbNMIid/JArsSD75ApybGNAH6TwziCfQF/pELrjbCmBMlihpZCN7dieGLNug4OYOmPcvbhpBDdbMvXFuWjEhrRywwjRivYmE7/pQBsVY6ttYWKJ4iY11bWaaZsAsx6jK01SuOk0IElBjpRJShJ/gogBx/amEamIsQCXKYaRapIUfQESbQeNRccWJDAruvAcZ0fZUV9NVUFb+dAFjluvSmnmzh1Opx6XGGpt0WTHL18++2nGe1nhqpRjzNBK2S0l+2TeyY01Kwg/0rA2StvUjDFTm57n17A4ht32k5mdr+Yz2gxyc64P+TU0DbP2D2/alpc/RPRM24mEhfK667+uGyh14N+bYWoP2/p9gScX/TDyVOxPbvLhK/SLyi7Z2cpE/gIJ73G5ni1bblb70e7r8HyT4e1vkHcI96bQ9Q14UO1OvOrQDK5YyebEwUu8kTgpCqzps2cnW9WeCxnXxX6wrNL7C17d83Co7jt/urpLCH4nea0Bo+wspvcYOp389xeWgYxI
+sidebar_class_name: "post api-method"
+info_path: docs/api/jatrix-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create tenant"}
+></Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/organizations/{orgId}/tenants"}
+  context={"endpoint"}
+></MethodEndpoint>
+
+Create tenant
+
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./create-tenant.ParamsDetails.json")}
+></ParamsDetails>
+
+<RequestSchema
+  {...require("./create-tenant.RequestSchema.json")}
+></RequestSchema>
+
+<StatusCodes {...require("./create-tenant.StatusCodes.json")}></StatusCodes>

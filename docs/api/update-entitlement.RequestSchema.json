@@ -1,0 +1,16 @@
+{
+  "title": "Body",
+  "body": {
+    "content": {
+      "application/json": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "status": { "type": "string", "enum": ["active", "suspended"] }
+          },
+          "title": "UpdateEntitlementInput"
+        }
+      }
+    }
+  }
+}

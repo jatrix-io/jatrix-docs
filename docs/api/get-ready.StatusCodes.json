@@ -1,1 +1,6 @@
-{"responses":{"200":{"description":"API is ready to serve traffic"},"503":{"description":"API is not ready (e.g. database unavailable)"}}}
+{
+  "responses": {
+    "200": { "description": "API is ready to serve traffic" },
+    "503": { "description": "API is not ready (e.g. database unavailable)" }
+  }
+}

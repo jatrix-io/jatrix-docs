@@ -1,0 +1,52 @@
+{
+  "responses": {
+    "200": {
+      "description": "List of organizations",
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": { "type": "string", "format": "uuid" },
+                    "name": { "type": "string" },
+                    "slug": { "type": "string" },
+                    "created_at": { "type": "string", "format": "date-time" },
+                    "updated_at": { "type": "string", "format": "date-time" },
+                    "deleted_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
+                    }
+                  },
+                  "title": "Organization"
+                }
+              },
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "pagination": {
+                    "type": "object",
+                    "properties": {
+                      "limit": { "type": "integer" },
+                      "offset": { "type": "integer" },
+                      "total": { "type": "integer" }
+                    },
+                    "title": "Pagination"
+                  },
+                  "request_id": { "type": "string", "format": "uuid" },
+                  "timestamp": { "type": "string", "format": "date-time" }
+                }
+              }
+            },
+            "title": "OrganizationListResponse"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+---
+id: delete-role
+title: "Delete role (soft delete)"
+description: "Delete role (soft delete)"
+sidebar_label: "Delete role (soft delete)"
+hide_title: true
+hide_table_of_contents: true
+api: eJy1Vm1vGzcM/isEPyWAfE6Crlj9acGSDQ46pIgzdEAcLModbSvVSReJ59U73H8fqDu/JM7aLes+2SdR5CPy4SM26CsKmo134wJHWJAlpitvCRWynkcc3aB8RrxVWOmgS2IKstyg0yXhCH2YjwtUaByOsNK8QIWBHmsTqMARh5oUxnxBpcZRg7yq5FDkYNwcFc58KDXjCOvaFNgqLCjmwVQCCUd4GebamT8TQhifYas2cavgizrn/y/2hy7As7Dmm8Xbcfrb4Ioea4o8GJ+t3S9IFxSeBJhpG//LjX60hhwPYl1V1lABoQsK4zOY+QC5D4FsynUG5/nCUwHGQaBYeRcJSmKdYXsrkLqlKCBOjt7Iz9NQQhro6JSAvHnRiKKvQ07gPMPM105ym3vH5FisteDME6DhQ5Qjzf7l/f0D5YxKCFFRYNOhohB8+LpZ7gvaz2SrsKQY9fzlvYJYGxv3vbdtOsn/AF+f+99N8fVCPq/jLl1gFny5qaQPMCcnLd2lnU1JkXVZfTFIoZkGYroXaTy5HHz/9ugYto7a5JatuPpFrrq7cJ6y3rYpEU9dnSUyQBBiHEQ/454eh5hStvBbAZJkSXONcLg8HvodDYjDJulNO+zbPw6bjRC0Q3Eeh40pWlQYKSzXWlUHKy3FXMXRcFhQ6bMHzcF8zozfu/QZlR5OP4zhXkdKfI+U18HwKvm6Jx0onNYC8OZ2d3si3OzKu2u0ybzEx75/5bszQtX/+Wldj4uP13ugLj5eg85zihHYfyIHB1eTk+/eHmZwec/aOFgaDR8uJ9cgOdM1L4bJLkv1MW7mE5C+Thfp8nLJ/UDdlomgYaL1BH72SwpOu5zg3M2NoyQWpiDHhlcKytqyGTCJyUqBhPahr5eaOu0K6Es0sLQkC9LhwdsMrhcmpkSX2uk5RXhSarU+FhUk7xzV1NWRQlSJRmJBoTQxduYSKYGyVJLjmE3d1J1au1GwCDNvrf8D7hooNGuVJG0EDWy7UW2pDi20dxm8N5G3LqbOuNzWBcFd0sNKz41LgMWPNaVhBX42i8QK2LO2yUlqjAh1pKm7ayCpkxwQ/REYSWwU9MoCbQdNjk4dKhQid+U5zo6yo14mdZ5ksn9EusKhQiq1Ebo/0GwWaEWxMo5sdvzu3ckPc9nLcl8mWlQ+cqndjpMvdekTnmxIzfSZh5XVxongpEZr+va9weUxKnxSVVQ4Wo8M6/rK2u5znoori6aQuWPhI4uzppGG/DXYtpXlx5qCdOStwqUORt8Ls28aLEyU/9v38hnuzQODB1f903oIzwcN9fL1+kXtVlIUbWv5QoWfaLUZheRdfxWGnYHjVeG3KXw1hNcFllnjtlXrkeXfFeGbDCV/A7uD92y62sCXLHUWp3lOFe/s7U0eIvObV+rs/P359Tm27V9y+9uh
+sidebar_class_name: "delete api-method"
+info_path: docs/api/jatrix-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete role (soft delete)"}
+></Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/v1/organizations/{orgId}/products/{productId}/roles/{id}"}
+  context={"endpoint"}
+></MethodEndpoint>
+
+Delete role (soft delete)
+
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails {...require("./delete-role.ParamsDetails.json")}></ParamsDetails>
+
+<RequestSchema {...require("./delete-role.RequestSchema.json")}></RequestSchema>
+
+<StatusCodes {...require("./delete-role.StatusCodes.json")}></StatusCodes>

@@ -1,0 +1,49 @@
+---
+id: update-product
+title: "Update product"
+description: "Update product"
+sidebar_label: "Update product"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV91PG0cQ/1dG85RIaxuiNGr8VBpo66gVCIhSCVthuRvbS/Z2L7tzJs7p/vdq9s4fYJpAitSHlhfOu/Pxm8+dqdGXFDQb70Y5DrEqc810EnxeZYwKWc8iDi+wO4k4UVjqoAtiCnJTo9MF4RB9mI1yVGgcDrHUPEeFgT5VJlCOQw4VKYzZnAqNwxp5WQpT5GDcDBVOfSg0C4DK5NgozClmwZQCDId4HGbamS8JJ4wOsVFrvebJlG4J/bN3Sp8qitwbHa7Ez0nnFG4pmGob/4lZb6whx71YlaU1lENolcLoEKY+QOZDIJuM7sNRNveUg3EQKJbeRYKCWPexmbSQKPLPPl8KjMw7JsfyqUV0lmQMrqNorXfx+qtrSuEug6QDG4py2zrjrlWNwmir2T0XjUI2bOXo3XYejVxZMTaNEKzAJwUv9vbk322ndEzQpqJE94nMyTU/gMrkDwqk38rIDw/keaw/FWaBxAcfNH9VgTiqx6Yg4en89iienCw9ikehq6zVVxJsKbPt2K+6R6NQMvTbLu+y90FuvFtC25UK0+CLdRH5ADNy0twoeV9wR9ZF+WATb2sanR33fny1tw8bQdtW/yGm3uOG0y7hu/x/eV/Kj9xCWyPFLYXyZAlPIfjwbbLM5/enZUEx6tn9dzmxNjbuSk9W/pfjfpS8vor2y91on1L0VcgInGeY+so9YY/7P+T/bsh3nvj2IYRyPVEVxHOft+NKJvNKGluGOFjsD7YflTio00jVDDreOKhN3qDCSGGxGr6qYGU0YS7jcDDIqfD9a83BfO4bv2PWIRUeDk5GcKWlH01EVFYFw8sk64p0oHBQCZyLyfb1mWRfG8BtorVvRT92c5D8bolQdR+/rDz+9v35Dqi3789BZxnFCOw/koNnp2cvfnj1vA/HV6yNg4XRcHJ8dg7iIV3xfJDo+ikCUh+nm+Hn6LMuSkub4WUT9vaN3Upn46Y+2dAF8W3ym/hnF2N7ZSJoONP6DH71CwpOu4zgyM2MozSvmZwcG14qKCrLpsckJEsFgtqHLrBq7LTLVxnRs7QgC1L+wds+nM9NTDEqtNMzinArJ9SKLSpI0jmqsasihaggeEtCQaEwMbbkoimBslSQ49gfu7E7sHY9REaYemv9DVzWIAOSSlPlEGrYlKra1AE00Fz24XcTeSNi7IzLbJUTXKaRtNQz4xJgkWNNYViBn04jsQL2rG0SkqomQhVp7C5rSK1LGKQ5CYzUiRR0bQeaFpqwjh0qlBpow7Pf3+vvdT1UZ7wV/TZwqJAKbaRSrmk6DbSkWBpHtr//+vWLn2Zy1898kTKq9JEL7baE7JTwreRYFwHTZx6UVhuXpjApzLor7gtc7OPtmTGiwuFqZ1oFVc5MLjvW3EcWvrqWWn0XbNPI8aeKghTrROFCB9POXxc15ibK92YluQNx/brgs9Nue3kOd5cqdb8l3aF2S3G6tpX8QoUfable+2R1+i4M36dUxulJo1Yr2eM88CRL19/AbuHd2R7X8MVLLcWbFk3vXIRsKHZe/g3HQZZRyV+lnWw9LicH529+kwbcbYRFevAx6BtZYPVN601ftqkoD7Oc1Wi1m1VpAMBWqPz9BZLdkDE=
+sidebar_class_name: "patch api-method"
+info_path: docs/api/jatrix-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update product"}
+></Heading>
+
+<MethodEndpoint
+  method={"patch"}
+  path={"/v1/organizations/{orgId}/products/{id}"}
+  context={"endpoint"}
+></MethodEndpoint>
+
+Update product
+
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./update-product.ParamsDetails.json")}
+></ParamsDetails>
+
+<RequestSchema
+  {...require("./update-product.RequestSchema.json")}
+></RequestSchema>
+
+<StatusCodes {...require("./update-product.StatusCodes.json")}></StatusCodes>

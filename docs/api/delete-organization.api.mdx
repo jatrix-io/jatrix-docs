@@ -1,0 +1,51 @@
+---
+id: delete-organization
+title: "Delete organization (soft delete)"
+description: "Delete organization (soft delete)"
+sidebar_label: "Delete organization (soft delete)"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVm1v2zYQ/iuH+5QAtJwEXbHq04LZGxx0SBFn6IDYWBjpbDOlSIU8ufUM/ffhKMcvcdZ22D5JIo93D++e505r9DUFzca7UYk5lmSJ6TrMtTN/pWVUyHoeMb/D/eWIU4W1DroipiDba3S6IszRh/moRIXGYY615gUqDPTUmEAl5hwaUhiLBVUa8zXyqpZDkYNxc1Q486HSjDk2jSmxVVhSLIKpE5b8AAOMBtiqbdw/ejf01FDk3mjwHH5BuqRwAGCmbfwvCH62hhz3YlPX1lAJoQsKowHMfIDCh0A24ctgWCw8lWAcBIq1d5GgItYZtlOB1C1FAXFx9kYeX7lsV5oE6M1rxjcUfRMKAucZZr5xUoPCOybHYq0Fb5F89R+jHFkfJ8E/PFLBqLAOQgw2HToKwYdvmxW+pOOMtgorilHPX98ribWx8dh726aT/B34NjX405TfLujLeu7TBmbBV9uK+gBzciKPLu1sKoqsq/qrQUrN1BPTo0ij8XXvx7dn57Bz1Ca3bMXVb3LV/YVhynrbpkQcuhokMoDfJ8hJ9DPe0OQUU+oWfidqSZqIMcf+8ry/fzL210mzLSqMFJbPem6CFQkx1zHv90uqfPaoOZgvmfFHlxtQ5eHywwgedKTE70hFEwyvkq8H0oHCZSMA7qb722PhYFfGfaNthiU+bvQq350Rqs3LL895v/p4ewTq6uMt6KKgGIH9J3JwcjO++OHtaQbXD6yNg6XR8OF6fAuSE93wop/sslQH42Y+AdnU4ypdXi55HKjbMhE0jLUew69+ScFpVxAM3dw4Ss3BlOTY8EpB1Vg2PSYxWSmQ0D5s6qEmTrsS6uDLpuCepSVZECUHbzO4XZiYEl1pp+cUD0gQ1fOxqCB556gmrokUooLgLYkFhcrE2JlLpATKUkWOYzZxE3dp7bZjRZh5a/1nuF9DqVmr1MJyWMNOdWpHaWihvc/gvYm8czFxxhW2KQnuU/+r9dy4BFj8WFMZVuBns0isgD1rm5wkAURoIk3c/RpSF5ID0mcERmoqCjYdBNoOmhydyNwSInflOc/OsrNNO9RFaoebodEVDhVSpY3Q/ZFms0ArirVxZLPzd+8ufprLXlb4KtGi9pEr7facfI8aD/iyJTfTF+7XVhsnDSYJbr2R6R0uz1HhQXVRYd6N16nChY8sZuu1SO73YNtWlp8aCqK5qcKlDkY/CHfv1liaKO+7CfgC0XZU4MnNZliewstxq14HvlnUbiVp17aRL1T4iVbbH4J22qrnefzv8PwvE/cfkHcIX/w6bG8gfxedxWVRUM17e0fjVHratuUOhu+Ht0Ns278BcDk+jA==
+sidebar_class_name: "delete api-method"
+info_path: docs/api/jatrix-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete organization (soft delete)"}
+></Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/v1/organizations/{orgId}"}
+  context={"endpoint"}
+></MethodEndpoint>
+
+Delete organization (soft delete)
+
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./delete-organization.ParamsDetails.json")}
+></ParamsDetails>
+
+<RequestSchema
+  {...require("./delete-organization.RequestSchema.json")}
+></RequestSchema>
+
+<StatusCodes
+  {...require("./delete-organization.StatusCodes.json")}
+></StatusCodes>

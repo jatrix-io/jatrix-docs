@@ -1,0 +1,51 @@
+---
+id: get-role-assignment
+title: "Get role assignment by ID"
+description: "Get role assignment by ID"
+sidebar_label: "Get role assignment by ID"
+hide_title: true
+hide_table_of_contents: true
+api: eJzlVm1v2zYQ/iuH+9QCtOwEXbHq04IlCxxsSBFn6IDYaGjpbDOlSIWkvHqC/vtwlPwWp63b5ds+6YXHe33unqvRluRkUNYMc0xxTuHGajrzXs1NQSagwCDnHtM75APYnnicCCylkwUFcixRo5EFYYrWzYc5ClQGUyxlWKBAR4+VcpRjGlxFAn22oEJiWmNYlXzJB6fMHAXOrCtkwBSrSuXYCMzJZ06V7CSmeO3m0qh/os8wPMdGbOyqFzO6o/Sv3g09VuRDb3i+Vr8gmZPbMzCT2v+XsH7Vikzo+aostaIcXGsUhucwsw4y6xzpGHQCF9nCUg7KgCNfWuMJCgoywWbCLrW/PDtxOhjwY99ULKTcLXFmTeC3tEbJ9rNoqP/gWb4+DMpOHyjji6Vj/ATVWstlOEJK5Uelx+7U+eORdwIZacKx0qWzeZUdLV55csfKOqvpWNnMkQyUf5Thq+K5DNQLqqAWO5q+645AU2ktp5raXmg4WyrwJz7p+EYgo+nbhewgelScT+G+21Uwc7bYAN46mJPhoURtTVVBPsiiPDrSfUvD0XXv57eDE9gq2g3+Dw71y9m46boJm4aF3gzePNNP5G3lMgJjA8xsZfKXaylyzrpvi2U2p8P8xEp6L+fPn+UUpNL+UHsM9f+MgYuY9aat+b6qSwrg9gcoTFcQuaGgsLAdjXKmmIRS7C9P+rvDzPfrSJBNn/X0tnp8v1Z5gwI9ueWaUiunmXBCKH3a7+dU2ORBBqc+J8oexHlOhYWz90OYSobshFVllVNhFXVNSTpyZxW7dTfZPR4xHNuK7gptks32sWM3/m6FUHQvv61LcPXh9sCpqw+3ILOMvIdgP5GBVzej05/evk7gehqkMrBUEt5fj26BMyWrsOhHuSSWRJmZjY50pbmKwXOQh4baI+VBwkjKEVzaJTkjTUZwYebKUKRSlZMJKqwEFJUOqhdJI1sJYNPWdVUSYyNNDh1H9DQtSQM3tbM6gduF8jHRhTRyTh72CizW17yAlpK8GBvmDy8ieFiCXKG8b8XZUnRKUwRCMjZjc6b1ht89zKzW9m+4r4FZVkTCT6GGbQOKLbqhgeY+gd+VD1sVY6NMpquc4D5uC6WcKxMdZj1aFSoIsLOZpyAg2CB1VBJ7wUPlaWzua4gDiS/wyGE34nwR0A0TaFrX+OrYoEAGcluek2SQDLrJKLM4GbsVqy0cCqRCKob7A81mjlbkS2VIJyfv3p3+MuezJLNFhEVpfSik2VHytcbcw8kG1IE+h36ppTKR3rnR6q5p73B5gvs7iEeB6Xqzfdq5fKZy3ogX1ge+X9fcg3863TT8+7Eix004EbiUTrVEfFdjrjy/bxfIJ65uaARf3XS75mt4ugKL5yPqfkqz4jpIXfEXCvxEq82SzovuD/nwY0Z545k0Yr1Af18GXmRF/oLbrXtPdv2N+5ylVuIsy6gMO2cH5M5jdUMElxe32DT/AtdWnTU=
+sidebar_class_name: "get api-method"
+info_path: docs/api/jatrix-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get role assignment by ID"}
+></Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/organizations/{orgId}/role-assignments/{id}"}
+  context={"endpoint"}
+></MethodEndpoint>
+
+Get role assignment by ID
+
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./get-role-assignment.ParamsDetails.json")}
+></ParamsDetails>
+
+<RequestSchema
+  {...require("./get-role-assignment.RequestSchema.json")}
+></RequestSchema>
+
+<StatusCodes
+  {...require("./get-role-assignment.StatusCodes.json")}
+></StatusCodes>

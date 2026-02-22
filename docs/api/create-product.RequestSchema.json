@@ -1,0 +1,19 @@
+{
+  "title": "Body",
+  "body": {
+    "required": true,
+    "content": {
+      "application/json": {
+        "schema": {
+          "type": "object",
+          "required": ["name", "slug"],
+          "properties": {
+            "name": { "type": "string" },
+            "slug": { "type": "string" }
+          },
+          "title": "CreateProductInput"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+---
+id: list-users
+title: "List users"
+description: "List users"
+sidebar_label: "List users"
+hide_title: true
+hide_table_of_contents: true
+api: eJy1V21v2zYQ/isEP7UALTtBV6z6tGDJCgcbUsQpOiAOEkY6yUwpUiFPbjxD/304SpYV20mcrPtkSzrec7zX55bcluAkKmvGKY+5Vh6/enCeC44y9zy+5M3zleCldLIApKf4csmNLIDH3Lp8nHLBleExLyXOuOAO7ivlIOUxugoE98kMCsnjJcdFSYc8OmVyLnhmXSGRx7yqVMprwVPwiVMlWcRjfuZyadQ/wUA2Pua16HARjDT4/0FfBP0boFoVCleI9xW4Bd8BoQxCDo6TykxWGnl8OBK8kA+qqAoeH4xGW3BfZK5Mc88GpIdqs8zDm2CfxWnV9oD+HpzDfQUeB+PjFdwMZBqUrj2bSe3/i2t/1woMDnxVllpBylwDysbHLLOOJdY50MHGiJ0kMwspU4Y58KU1HlgBKCNeX5FJzStPRhyORvTzGOpP5ZHZjFVtUifWIBgkQUnoSYAZ3nmSXm5fyd7eQUKuLx1VCqoGK5XYl5LOSQqJQij8y6dVupfTbC/5r/c801TFvtLwgOCM1E/Im0preauhqaVacPJikyqbwhRj5UstF9e7BXZog0Iq/aydjcSOox4lVn7XWTBUYZdcJqjmEJK4++srX4JJIeVXteBaerzWNlfmWuKzZqQSYYCqgF2mJA4kQrq/DvJjmb76TAoaXnVmy1ZKD4X0GHr6UZLYyiCn91RSL+dt2fWOl2WbJrbdnCivm76z8xtalHrXp57x6xZGJ9rmsXeBqAI8yqLc1/P1pt+opZy3jaf9/GH0Ybv1nIO3lUuAGYsss5VJf17/Aeese1kssenuWi3Ae5k/UceAUukdbazeP1NeE5TN6dAfQixztujmg3UsB0N8Bd4Uy02k8eRs8OvH0QFbK+oH+y+6av/FSfB63cR8x5xZDZkCcGaJTuVhagdmEvPh/GDYb+l+uAzcqR42TdsPlytOUw9Xqjy4+YpwVU7TPEYsfTwcplDY6E6iUw+Rslt3O4bCsqMvY3YrKU2vSFVSOYWLoOsWpAN3VJFll1f9zxNKwSaKfaHOwYS/Yh/03Ahx0f75Y+X2028XW0adfrtgMknAe4b2Oxj27nxy+MvH9xE7u0WpDJsryb6cTS4YOUtWOBsGuSiEQZnMBkPacJyGy9Mlt4GaT8ozySZSTthnO6fRZRJgJyZXBgLTUCkYVLgQrKg0qkHwf7IQjKCtawMlpkaalJXOplWCAw1z0IwK2VkdsYuZ8sHRhTQyB88exVisjnnB2jCLqQnRFcxZDSQBrlDeN+KEFIzSUIBBH03N1Bxp3dEfzzKrtf3BbpaMaIgIfChmS7YuOrHOaFaz+iZiIT87FVOjTKKrFNhNIFPrxk56QusWLT0ULLTkoCTkv6c0n5qbJQtNiA5QmyEzQk8RrG0grG5Mo6NTwwWnRG7CcxCNolHbDWUSumHLQJvA8Y4c8DvIMgcL8KUyoKODT58Of8vpW5TYIqRFaT0W0vSUPCrGR4nRZTHCAw5LLVWYIaGylm2hXvL5AX/MvkhPvFp02jDSq94OUq22pJn1SEqWS6q8r07XNb1uWDuVXqo8DeU1j96wsBsR2zuB2G3+d1j0dpO51BXJBGL/JrBu33gGrZNZw13Rg1MN43jVRd+dt7vFe7a58T1hxIp4m0XfhM64EKrX3b9nw3r1exN6lxU10cx2f3qdQ37KhvRs/DZWvUdJ00gcJQmU/QhvERaKeDfrPp9c8Lr+F9BOnZw=
+sidebar_class_name: "get api-method"
+info_path: docs/api/jatrix-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List users"}
+></Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/organizations/{orgId}/tenants/{tenantId}/users"}
+  context={"endpoint"}
+></MethodEndpoint>
+
+List users
+
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails {...require("./list-users.ParamsDetails.json")}></ParamsDetails>
+
+<RequestSchema {...require("./list-users.RequestSchema.json")}></RequestSchema>
+
+<StatusCodes {...require("./list-users.StatusCodes.json")}></StatusCodes>

@@ -1,0 +1,49 @@
+---
+id: create-permission
+title: "Create permission"
+description: "Create permission"
+sidebar_label: "Create permission"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV99v2zYQ/lcO99QCtJ0UXbHqaVmTDS42JEgydEBsNIx0tplSpEpSTj1B//twlGzJdtYmWYY9bHmJTR7v93f+rkJbkJNBWTPOMMHUkQx0Ri5X3itrUGCQc4/JFXaHHqcCC+lkToEcX1ZoZE6YoHXzcYYClcEECxkWKNDR51I5yjAJriSBPl1QLjGpMKwKfuSDU2aOAmfW5TJggmWpMqwFZuRTpwp2DxM8dXNp1B/RWxgfYy02dgtnszIN/5zts8bAjtnfB+f0uSQfBuPjteUFyYzclu2Z1P7vGH+nFZkw8GVRaEUZuMYojI9hZh2k1jnSMS1DOEkXljJQBhz5whpPkFOQQ6ynjUvkw482W7Ebu9lJrQlkAl9JNpVGnaNbz15U+/7bm1tKw1aoV/iJVrE/HHdWUOT5AR/uxb0b5959LTCooPno3U5jjk1RBqxrllkHGi29OjjkfzvV27yDpsO5T54c7XZomQwPkFLZg+re9vHHB4o/Ka0CTam1vOG8ct1r0cI++yjDV81mMtAgqJzYRllkj36TkaZHvdnztdcSvSlVC+Qm/3YZWgA8KL+7KOyDHWbO5hscWgdzMjxHKZaFXfdB5sWDo9y2NL44HXz/5uAQOkX9wH/lUO/PxHkLhRYZrw8O9sEwNkupFY8IhtCz4YCcs+7bYqnN6N6ezcl7Ob//LqMglfb72mOU/+XSn8Ssr6v9er/a5+Rt6VICYwPMbGmecfT9X/J/t+T7RCHOcSj6/C2nsLDM7QrrY4qYGSU4Wh6ObI9Q+VEVyVs9an+D/KjasKp6VPTYn0BPbrlmfqXTzHpCKHwyGmWU2+GtDE59GSq7F+sx5RaOzsZwI3lITVlVWjoVVlHXDUlH7qhkD6+m/esLbsmmqn2hTcLZPrYUi783QijaDz+ty/D+w+WeU+8/XIJMU/Iegv1EBl6cX7z67s3LIZzeBKkMLJWEs9OLS+CkyTIsRlFuGMvCoDnveNXJF5kXmjakp2uFbaNdpyszszGStr7vY/Y4S/ueNlfKg4QLKS/gZ7skZ6RJCU7MXBmKhFBlZIIKKwF5qYMaBGKRlQD23bq24mJipMmgLfJA05I08GRwVg/hcqF8rFQujZyTh61mEetnXkDUHryYmNKT8wKc1cQSXcsIYEvRKU05meCHEzMxR1pvWKqHmdXa3sF1BUypRKStCVTQoVh0EIEa6ush/KJ86FRMjDKpLjOC68h5CzlXJjrMerTKVRBgZzNPQUCwQeqoJALKQ+lpYq4riFONH/DcYjfikBLQTiSoG9f46YQBxkhoynM4PBgetONVpnG8totCUzgUSLlUjJdbms0crcgXypAeHr59++qHOd8NU5vHvmK45tL0lNyH7vuZXqAvYVRoqSI1igitWuBf4fIQBW5VEwUm681tXVc+629Vxfb6t+BhklxhVTGSf3O6rvn4c0mOoTwVuJRONcTtqsJMef7c7UI7fm9+kPDFebtLvITdfU/cH157KM2KiyF1yd+wJcftRso725N86O19TzLfpbCe1mK9HD4uJc+y/v2F942XO3vsJgpOWyPxrvFmcMlKOok99tC9OEpTKsJXZae9Xyeerzyu29U0j5wBnbzj9VLeNTm1RdOv/NvOZxVqaeZl5BDY6OS/PwHQQtNv
+sidebar_class_name: "post api-method"
+info_path: docs/api/jatrix-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create permission"}
+></Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/organizations/{orgId}/products/{productId}/permissions"}
+  context={"endpoint"}
+></MethodEndpoint>
+
+Create permission
+
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./create-permission.ParamsDetails.json")}
+></ParamsDetails>
+
+<RequestSchema
+  {...require("./create-permission.RequestSchema.json")}
+></RequestSchema>
+
+<StatusCodes {...require("./create-permission.StatusCodes.json")}></StatusCodes>

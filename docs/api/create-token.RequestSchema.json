@@ -1,0 +1,52 @@
+{
+  "title": "Body",
+  "body": {
+    "required": true,
+    "content": {
+      "application/json": {
+        "schema": {
+          "type": "object",
+          "required": [
+            "organization_id",
+            "tenant_id",
+            "product_id",
+            "identifier",
+            "password"
+          ],
+          "properties": {
+            "organization_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "organization_slug": {
+              "type": "string"
+            },
+            "tenant_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "tenant_slug": {
+              "type": "string"
+            },
+            "product_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "product_slug": {
+              "type": "string"
+            },
+            "identifier": {
+              "type": "string",
+              "description": "Username or email"
+            },
+            "password": {
+              "type": "string",
+              "format": "password"
+            }
+          },
+          "title": "CreateTokenInput"
+        }
+      }
+    }
+  }
+}

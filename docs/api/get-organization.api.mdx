@@ -1,0 +1,49 @@
+---
+id: get-organization
+title: "Get organization by ID"
+description: "Get organization by ID"
+sidebar_label: "Get organization by ID"
+hide_title: true
+hide_table_of_contents: true
+api: eJzlVlFvGzcM/isEn1pAPjtBV6x+WrBkgYMNKeIMHRAbjXJH20p10kXiufWM++8DdRfHjpM1wfq2J/tEivxIfiK5Rl9R0Gy8GxU4xDnxeZhrZ/5OZ6iQ9Tzi8Aq3jyNOFVY66JKYgojX6HRJOEQf5qMCFRqHQ6w0L1BhoLvaBCpwyKEmhTFfUKlxuEZeVXIpcjBujgpnPpSacYh1bQpsFBYU82CqhGW4gwFGx9iojd+/ehd0V1Pk3uj43v2CdEFhB8BM2/hfEPxqDTnuxbqqrKECQusURscw8wFyHwLZhC+Dk3zhqQDjIFCsvIsEJbHOsJkKpPYoCojDwUB+ng8WFebeMTkWPS3O8yTo30ZRXu9H5G9uKWdUWAUpMZvWVaH5BVqmeFFu2tw/VmwURlvPnxTkgTRT8VnzvzooNFOPTUlyp66KV98pyNKr7ih0tbX6xlLL0qZRyIblc7cSjUKp4vdz2FHj80ty+Zhm22yGWfDlhmg+wJycPFlKJRDwkXVZvTjOXU+j8Xnv5/eDA3gwtB36HxLqc7m46DiMTSMq7wbv9ll8QdHXISdwnmHma1f8OC5TCD58Xy33xdMsLSlGPX9aVhBrY+O+9RTq/5kBJynrTVvzXVOnJPC2evTNClI7LokXvpsvkiaZC0PsLw/62+qxv07jo0GFkcLyfrTUwUo3Z67isN8vqPTZreZgvmXG74VzTKWHo48juNHCzKmYyutgeJVs3ZAOFI5qAXA13RaPhXVt4baVNjkV/9iNDvlulVB1f367z/TZp8s9UGefLkHnOcUI7L+QgzcX48Of3r/N4PyGtXGwNBo+no8vQXKia170k16WMm/czCcgXQXOUvAS5L6jVmQiaBhrPYZTv6TgtMsJTtzcOEpzyhTk2PBKQVlbNj0mUVkpENc+dPVQE6ddAVXwRZ1zz9KSLMjbDd5mcLkwMSW61E7PKe5UPqr7a1FBss5RTVwdKUQFwVsSDQqlibFVF08JlKWSHMds4ibuyNrN8Iww89b6r3C9BpliKk3TIazh4Z2pBxJDA811Br+byA8mJs643NYFwXUaxZWeG5cAix1rSsMK/GwWiRWwZ22TkUT5CHWkibteQ+o7ckE6i8BIbURB1zOgaaHJ1YmMbiFyW56DbJANugao89QAu/2lLRwqpFIbofstzWaBVhQr48hmBx8+HP4yF1mW+zLRovKRS+22jDz7/nZIsmE00zfuV1abNNXSK1t3b/MKlweocKekqHDYrndThQsfWdTWa3lnfwbbNHJ8V1OQhzZVuNTBtPP0ao2FifL/YQN7hGgzEfDNRbesvYXH6556Gnh3qN1Kcq1tLV+o8AutNgtpM23U/T74Ojw/ZON7BnmL8NHquolAtttW4yjPqeIt2d7UlEa2abKnJ5fYNP8AfOUYEA==
+sidebar_class_name: "get api-method"
+info_path: docs/api/jatrix-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get organization by ID"}
+></Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/organizations/{orgId}"}
+  context={"endpoint"}
+></MethodEndpoint>
+
+Get organization by ID
+
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./get-organization.ParamsDetails.json")}
+></ParamsDetails>
+
+<RequestSchema
+  {...require("./get-organization.RequestSchema.json")}
+></RequestSchema>
+
+<StatusCodes {...require("./get-organization.StatusCodes.json")}></StatusCodes>

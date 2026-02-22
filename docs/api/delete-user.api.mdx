@@ -1,0 +1,45 @@
+---
+id: delete-user
+title: "Delete user (soft delete)"
+description: "Delete user (soft delete)"
+sidebar_label: "Delete user (soft delete)"
+hide_title: true
+hide_table_of_contents: true
+api: eJy1Vm1v2zYQ/iuH+9QAtJwEXbHq04IlG1x0SJGk6IA4WBjpbDOlSJU8ufUE/ffhKPklcdZuWffJFnm8e3jPc8dr0dcUNBvvJiXmWJIlpveRAipkPY+YX6N8RrxRWOugK2L5yq9bdLoizNGH+aREhcZhjrXmBSoM9KkxgUrMOTSkMBYLqjTmLfKqlkORg3FzVDjzodKMOTaNKbFTWFIsgqkFEuZ4HubamT8TQpicYqc2cZmcdvz/hb5K/h8FNd8t3I7T30cX9KmhyKPJ6dr9gnSZWNgGmGkb/8uFfraGHI9iU9fWUAmhDwqTU5j5AIUPgWzKdAZnxcJTCcZBoFh7FwkqYp1hdyOQ+qUoII4PX8rPw1AiGejFlIC8fMrogqJvQkHgPMPMN05yW3jH5FisteAsEqDxfZQj7f7l/d09FYwK6yBSZtOjohB8+LZZ4Uvaz2SnsKIY9fzpvZJYGxv3vXddOsn/AN+Q+z9M+W0iH/O4KxeYBV9tmPQB5uSkoPu0s6kosq7qrwYpNdNITPciTS7PRz++OjyCraMuuWUrrn6Tq+4unKWsd11KxENXp0kM0IgwXkQ/40EeB5hStvDb9iPJkuLKcbw8GvudDhDHbeo23bgv/jhu112gG4vrOG5N2aHCSGG57lNNsFJQzHXMx+OSKp/daw7mS2b83pVPqfJw8m4CdzpSUnukogmGV8nXHelA4aQReNc3u9uXosye3F2jTd4lPg7VK9+9Earhzy9rNt58uNoD9ebDFeiioBiB/Udy8OLi8viHVwcZnN+xNg6WRsO788srkIzphhfjZJcldoyb+QRkYOlNurxccj9Qv2UiaLjU+hJ+9UsKTruC4MzNjaPUKkxJjg2vFFSNZTNKJBQrBRLah4EtNXXalVAHXzYFjywtyYLUd/A2g6uFiSnRlXZ6ThEeEK3Wx6KCgWs1dYliBcFbEgsKlYmxN5dICZSlihzHbOqm7sTaTf+KMPPW+s9w20KpWavU0HJoYVuLait06KC7zeCtibx1MXXGFbYpCW5TN6z13LgEWPxYUxlW4GezSKyAPWubnKSyiKL9qbttIfUmOSDdR2CkVqNg6CvQ9dDk6NShQhFyT89RdpgdDk1SF6lJDk9ITxwqpEobkfs9zWaBVhRr48hmR69fH/80l72s8FWSRe0jV9rtOPlajT7QyUbUTF94XFttnLSbVGjtULzXuDxChQ9YRYX5elwYWJWlnZc8MSxrppSJY+Eji6u2lXJ8H2zXyfKnhoLU443CpQ5G34mur1ssTZT/27fyEerN44IvLoZn9QAejxjq6csNi9qthBJtG/lChR9ptRmC5E1/FobtrPGs6JsEPhvA8+LKlHHTqfWw8u8o+C7jyN/A7uE9mqs28CVLvcVJUVDNO3t7M4e0+M37dHr29uzqDLvuL/wj2EQ=
+sidebar_class_name: "delete api-method"
+info_path: docs/api/jatrix-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete user (soft delete)"}
+></Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/v1/organizations/{orgId}/tenants/{tenantId}/users/{id}"}
+  context={"endpoint"}
+></MethodEndpoint>
+
+Delete user (soft delete)
+
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails {...require("./delete-user.ParamsDetails.json")}></ParamsDetails>
+
+<RequestSchema {...require("./delete-user.RequestSchema.json")}></RequestSchema>
+
+<StatusCodes {...require("./delete-user.StatusCodes.json")}></StatusCodes>

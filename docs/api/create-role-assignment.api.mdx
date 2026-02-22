@@ -1,0 +1,51 @@
+---
+id: create-role-assignment
+title: "Create role assignment"
+description: "Create role assignment"
+sidebar_label: "Create role assignment"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV21v2zYQ/ivEfWoB2o7TxG39aVmTDS42pEgydEBsNBfpZDOlSJWk3HqC/vtwlPyetu5WYBg2f7Ek3h2Pz909vKvAFuQwKGtGKQwhcYSBrqymM+/V1ORkAkgIOPUwvAVeEOsVDxMJBTrMKZBjiQoM5gRDsG46SkGCMjCEAsMMJDj6UCpHKQyDK0mCT2aUIwwrCIuClXxwykxBQmZdjgGGUJYqhVpCSj5xqmA/YQiXbopG/RHdFqNzqOVq3987V/ShJB86o/Pl9jPClNyWAxlq/3c8eKUVmdDxZVFoRalwzaZidC4y60RinSMd/euKi2RmKRXKCEe+sMaTyClgF+pJ4xL58KNNF+zGLkSJNYFDMKwAeask2uw9ePai2vff3j9QEraOeguBDJrwTnE8CmfTMmlfSk+ueXJWEz9NokRBLijy0e5K9xCQNqwfIr7c/xDZpYdfl60lBBU0i7x6JJ1HpigD1DXLLQMSj3p81Oe/7UDHjMeVsmgKhCH7y6HZBjjFcIDUgSDZjcI4FNh/YYRly1PpOwxfFE8xUCeonJoK1vRNOhJMqTXecypxOW5m1g5F1hK4pr8eyLbeDzrnLulscpvInM1XtGOdmJJhIqcmpionHzAvDj7p9k6j68vOi8FRX6wNbR7+Vz7q59G4aquqLbKTo6P9uhqZOWrFrMjV+N2qiZyz7utiiU1pH5oYRO9x+vhaSgGV9vvW4yn/y+G/iKgvo33yCIuSt6VLSBgbRGZL8x0J9P+Q/7Mh3++NIjcLt31zQsRrZrnLLKyPOHFbOITevN/bvLh8r4rdY91jEx3caDcleHLzZatZOs3dXQiFH/Z6KeW2+4DBqU9dZfcOeE65FWdvRuIemZkmbCopnQqLaOue0JE7K9mj28nm8jXnYRPKTaEVyrw/tK0kvzdCINuHn5bYv357s+fU67c3ApOEvBfBvicjnlxdH58OnnbF5X1AZcRcoXhzeX0jGCQsw6wX5boxFlwpV+v+8eIT5oWmna4NnmX44jQbnHROn/efd05OB8ed+2dZ0jlOXg6eZYMBZjjYbgwP1lnd7ocqrK74wxRqbuAzG0/U5t3rGGAO5D6YzZLyAsU14rX42c7JGTQJiQszVYZib65SMkGFhRR5qYPqRKyShRQMr3VtEsqxQZOKFpWOpjlpwYzlrO6Km5nyMZlyNDglL7byVy7VvBRNJLwcGwbLy1gWLEEuV9434rxTdEpTzPPu2IzNmdargcGLzGptP4q7SnDDKOMEMRSVWLOLXJeuqEV91xW/KB/WJsZGmUSXKYm7OH4UOFUmOsx2tMpVkMJmmacgRbABdTQSC92L0tPY3FUisi0rMJ+yG5E8pWiZUtSNa6w6NiCBi7UJT7971D1qaR+TSPvtzNYEDiRQjopL+oGyzNGCfKEM6W7/5cvjH6a81k1sHlOfGSRHs2Hks6yzlSSrqg30KfQKjcrENpWZpGoJ6RbmfdjupZl5hsuRdo+VJhJmzGjDW6gqppffnK5r/vyhJMf8MpEwR6eaVvK2glR5fl4PojtOrq5GeHLVDnJPxe7UKx8/S/sRzYLhR13yG0h4T4vVXF5Parkci7/Nn+8y+H7G88bDnQl+dQIe8huJV403nRs2spbYayLWGmdJQkX4ouxk435ixmUCb4fyPLYO4PAjRx8/NnjaoskMvuL5WwUazbSMrQQ0Nvn3JxT39Xs=
+sidebar_class_name: "post api-method"
+info_path: docs/api/jatrix-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create role assignment"}
+></Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/organizations/{orgId}/role-assignments"}
+  context={"endpoint"}
+></MethodEndpoint>
+
+Create role assignment
+
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./create-role-assignment.ParamsDetails.json")}
+></ParamsDetails>
+
+<RequestSchema
+  {...require("./create-role-assignment.RequestSchema.json")}
+></RequestSchema>
+
+<StatusCodes
+  {...require("./create-role-assignment.StatusCodes.json")}
+></StatusCodes>

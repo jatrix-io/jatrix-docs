@@ -1,0 +1,49 @@
+---
+id: delete-tenant
+title: "Delete tenant (soft delete)"
+description: "Delete tenant (soft delete)"
+sidebar_label: "Delete tenant (soft delete)"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVm1v2zYQ/iuH+5QAtJwEXbHqU4PZGxx0SBF76IA4aBjpZDOlSIWk3HqC/vtwlPwWZ+3W9ZMk8l6eu3vuTg3aipwMyppJjinmpCnQjIw0AQUGufCY3mJ34PFOYCWdLCmQ44sGjSwJU7RuMclRoDKYYiXDEgU6eqqVoxzT4GoS6LMllRLTBsO6YiUfnDILFFhYV8qAKda1yrEVmJPPnKoYFqZ47RbSqL8iSpiMsBVbv+qHOd0z+ufghp5q8mEwGW3ML0nm5A4cFFL7/xPWL1qRCQNfV5VWlIPrnMJkBIV1kFnnSMegExhnS0s5KAOOfGWNJygpyATbO4bUHXkGcXH2ih+Hrrr6QVfdCOXVS2I35G3tMgJjAxS2NpzdzJpAJrC0ZKRZhDR89KzSHIdvHx4pY/JUjrkVVIeLnLPu22KZzek4l63AkryXi5fvcgpSaX9svW2jZvgX+Prsf1T5t0v5vJL7hIHC2XJbS+tgQYY7rEt7UCX5IMvqq05yGWjAokeeJtPrwc+vz85hZ6iNZoNmU79zqPsH45j1to2JODQ1imSA0FHjxNtiQ5BTjElb2t1E4HRxg6U4XJ0P7V5D+mETm78ddpb8sFF5iwI9udVmStROcw+FUPl0OMyptMmjDE59SZQ9inFEpYXL9xN4kJ4iwT1ltVNhHW09kHTkLmtGc3u3fz1lKnbV3BfaJpr9Y9+w/N0Joehfft2k/+rD7AjU1YcZyCwj7yHYT2Tg5GZ68dPr0wSuH4JUBlZKwvvr6Qw4QbIOy2GUS2I5lClsBNKX5SoGz0EeO+qulAcJUymn8JtdkTPSZARjs1CG4nRQOZmgwlpAWeugBjH52VoAu7auL46YG2lyqJzN6ywMNK1IAze0szqB2VL5mOhSGrkgDwd1FRs1L3qSeDE3tSfnBTiriSXIlcr7Tpw9RVCaSjLBJ3MzN5dab0eWh8JqbT/DfQO5DFLEGZZCA7vmEztmQwvtfQLvlA87E3OjTKbrnOA+DsBKLpSJgNmOVqUKAmxReAoCgg1SRyOxDzzUnubmvoE4jFiBxw3DiLNFQD9IoO2gsercoEAmclee8+QsOeunosziVOy3Rlc4FEilVEz3RyoKR2vylTKkk/M3by7eLvguyWwZaVFZH0pp9ox8vSkPmLKldaAvYVhpqQxPmNhqTd+tt7g6R4EHdUWB6WZd93XlI5Xzdl9aH1itabj5/nC6bfn4qSbH3XcncCWdkg/M4tsGc+X5fbcMnyHc7g48uen35ik8X+fi5UD6Q2nWXACpa/5CgZ9ovf3h4KX9XRi+zylv8btWbH4G/lsGfsi6/wfYHbxn/y1b+JylTuIyy6gKe3dHG53n6Xb2j8bvxrMxtu3fHGt9Hw==
+sidebar_class_name: "delete api-method"
+info_path: docs/api/jatrix-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete tenant (soft delete)"}
+></Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/v1/organizations/{orgId}/tenants/{id}"}
+  context={"endpoint"}
+></MethodEndpoint>
+
+Delete tenant (soft delete)
+
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./delete-tenant.ParamsDetails.json")}
+></ParamsDetails>
+
+<RequestSchema
+  {...require("./delete-tenant.RequestSchema.json")}
+></RequestSchema>
+
+<StatusCodes {...require("./delete-tenant.StatusCodes.json")}></StatusCodes>

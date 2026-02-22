@@ -1,0 +1,19 @@
+{
+  "title": "Body",
+  "body": {
+    "required": true,
+    "content": {
+      "application/json": {
+        "schema": {
+          "type": "object",
+          "required": ["key"],
+          "properties": {
+            "key": { "type": "string" },
+            "description": { "type": "string" }
+          },
+          "title": "CreatePermissionInput"
+        }
+      }
+    }
+  }
+}

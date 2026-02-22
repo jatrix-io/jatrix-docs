@@ -1,0 +1,49 @@
+---
+id: update-tenant
+title: "Update tenant"
+description: "Update tenant"
+sidebar_label: "Update tenant"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV91v2zYQ/1eIe2oBWk6Krlj9tKzJNhcbEiQuOiA2GkY620wpUiWPbj1B//twlGwrcdamXYA+bHmJRfK+v35Xg6vQK9LOjgsYQawKRThBqyyBBFKLAKNLaA8CzCRUyqsSCT1f1GBViTAC5xfjAiRoCyOoFC1BgscPUXssYEQ+ooSQL7FUMKqB1hUTBfLaLkDC3PlSEYuPuoBGQoEh97pitWAEp36hrP4raSnGx9DIrVz9aEJ7TP8cnOOHiIEG4+MN+yWqAv0tAXNlwr8x65XRaGkQYlUZjYXwrVAxPhZz50XuvEeTjM7ESb50WAhthcdQORtQlEgqg2bWqoSBfnbFmtXInSW0xD8Vs84Tj+FNYKn1vr7u+gZzjnblORlIY+Db1hl3rWokBBMX91+Qohju8wTaWHIeqZz0CkFCiKFCW2Abvu541jQSSJNh2je9TBzbKhI0Dd9v7E9ynh0c8L/bfm1pRJvKLOCRHFIoesArXTwoFVwvp989kOZ7RERC7pH9+E7RZ5VkZw9Il8hyO99/FU2BBr+KRoKNxqhrThcu9n72dB2skcBl8uWodSX0oEjcreN+uxBz78ptJTsvFmi5v2IKIKsdSJXVgy28LWl8cTr48cXBodgx6hv9B5u674XzrmK6Anp+X82M7UoZzQ2GK+3RSga9d/7Lz3JX3J/YJYagFvffFUhKm7DPPVn5Xw77SfL6JtrP96N9jsFFn6OwjsTcRfuIXfL/kH/fkO/BjHaQCtpguhJp6YoWMeUMmRJyGsFwdTjsT6UwrBOqa4YtaRjWumh4UqBfbeBf9IbBEVEVRsNhgaXLbhR5/SnTbs+oYyydODobi2vF3WjGrPLoNa0Tr2tUHv1RZG0uZ/3rC869Nnz9R1vPsnzokBh/t49Adj9+2fj79dvJnlKv306EynMMQZB7j1Y8Ob949sOLp5k4vSalrVhpJc5OLyaCHaQiLYfpXZb8z9VxvoNfJ59UWRncwadd0NsZ3fvuRvNmAjc8ducuWdUF9XXyJHtsX+v2SgehxIVSF+JXt0Jvlc1RnNiFtpgwpC7Qkqa1FGU0pAcpkvlaCrbD+S7ScmqVLUTlXRFzGhhcoRHcDrwzmZgsdUhRK5VVCwziVpLIDVmQXYoFObUxoA9SeGeQX6AvdQjtc5aUlDJYoqWQTe3UHhmzBbZBzJ0x7qO4qgVDLpmQ7kjUYle6clcXohHNVSZ+14F2LKZW29zEAsVVgsmVWmibFGY+RpeapHDzeUCSghwpk5ikKgoiBpzaq1qkVsYE3KxYjdSZpOjakGha1Zh0akECV0UbnsPsIDvoeqrKqZcPbeAYgJVKc+3c4HzucY2h0hZNdvjy5bOfFnyX5a5MOVa5QKWyPSZ3S/pWbmyrgvATDSujtE2QjCu17or9ElaHcBuEBpAw2qxxXST5SBe89S1dICara67dN940DR9/iOi5eGcSVsrrFotd1lDowL93S9IdDbezBp6cd/vUU3F3zZP3G9IdKrtmlysT+QskvMf1dhHlZe6bdPg2oQzPGSp3S+LXeeBR1sB/ULtV784+u1WfvdS+eNVqM5gwk92LPRywozjKc6zos29nvVlzdjR59Rs35G5HLdP4B68+8kqtPrbedFWbiTym+awGo+wiJjgALVP++xth3sAF
+sidebar_class_name: "patch api-method"
+info_path: docs/api/jatrix-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update tenant"}
+></Heading>
+
+<MethodEndpoint
+  method={"patch"}
+  path={"/v1/organizations/{orgId}/tenants/{id}"}
+  context={"endpoint"}
+></MethodEndpoint>
+
+Update tenant
+
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./update-tenant.ParamsDetails.json")}
+></ParamsDetails>
+
+<RequestSchema
+  {...require("./update-tenant.RequestSchema.json")}
+></RequestSchema>
+
+<StatusCodes {...require("./update-tenant.StatusCodes.json")}></StatusCodes>

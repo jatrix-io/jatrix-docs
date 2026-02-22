@@ -5,7 +5,7 @@ description: "Returns readiness status. Verifies database connectivity."
 sidebar_label: "Readiness check"
 hide_title: true
 hide_table_of_contents: true
-api: eJylUsFu1EAM/RXLJ5Cm6QLiklsPVVlO1bZw2e7BTbzJiIknjJ2oIcq/o8kutBRx4jSasd97nuc3Y+w5kfko2xpLbNh2TPWEDo0axXKPn5iCtXhwWLNWyfe5GUvcsQ1JFBJT7YVVQY1s0AK+cvJHzwo1GT2SMlRRhCvzo7epQIeJtY+irFjO+H6zycef7Fe3W/An8gksgnIaGSzR8egrXBx+3Hz4J0qinZFvuGiK5zkGoZF8oMfAb3FZHHZsbTx/HB32ZC2WeJnOHqyqKdsw45BCLuFrH7JmJsfl4NDLMeaxzFtgLPEzWfJPcHW7/Qt3LnkFgjuiO7iJIychqRiupfHCcIwJfM1i3iYH3RDMXxjnlskBDdbG5H+sy3MPQlJDn2I9VHYReOSQXbcUQwH3rdc8A3Qk1LBCTA3JGaruF0wdrOym7kEG5aQOUgycOzh1XvXUnpXWoQJ3LKbFg6DDbNTpZ++KTbFBh1mfKst+CHXPdqzO91GtI3lR3P0OUtVy9e21YfPKx2L/mT2b+qxm/GSXfSAvOU3rcufz/vd42v/BYRvV8sM8Z64vKSxLfv4+cJqw3B8cjpR8zlO+vQzUzfU9LstP8l0rqw==
+api: eJytVFFv20YM/isEX9oCZznJ0AH104Il6xIEaGGn64A4WBiJttmc7pQ7yotn6L8PlOxkaZan7cmmjuTHj/zILcaGE6nEcFbhBJesU6Zqgw6VlhknV/grk9cVXjusOJdJGnPGCU5Z2xQyJKZKAucMWUnbXMBvnGQhnKEipVvKDGUMgUuVteimQIeZyzaJbnByde3wYVTGimdUN54NcouewhInWH6ZXqBDT7fsn8wc21Sy2W3yMLqANyvVJk/G44rrWHwjTfJQSBxbZZs384DdtcPEuYkhG8AWjw4O7Oc5oePPZyADnw1ohMxpzaCJFgspsXP4/uCHV6NC1F3kWy6WxRP1NtCaxNOt53fYdQ4bSlSzchqoBqqNy++jKd+3nHV0doIOxVKvmCpOaLXft5K4wsmCfGaHuVxxTVaMbhoLz5okLNHhIqaaFCfYtlJZ0c+r/dkLBx3ltmm8cAVpAIWzE1jEBGVMiX0vhwJOy1XkCiTAvndQs1LRt7NmXcWdYtBI6QonOLS8H3Ba7xm2yYb37zPC7ws84TqC9dSa1yPttTIzzsP4bpkSp+PWMB9bYAC4a43ZgxO63Z9f9o05/3r5AvX86yVQWZqINd5xgLfT2dH7H98V8OlWSQKsheDzp9kljNeHY2p1Ne79in6iEhaxL0TUG/J5z85YvAQaniQDwYxoBh/jmlOgUDKchqUE7ucgFQcV3TioW68yUjaXjQODjkn+6kfk5oFCBU2KVVvqyPOava2apugLuFxJ7jtZU6AlZ4hpSWEXmt0+LDvos2t289BmTtlBip7Ng1MtOQ/uhtQX5bnmoLmYh3k49v5RHBkW0fv4J9xse/W7Xi0T2O5F9odUDlRqzkp1Ax10NwVcSNanFPMgofRtxXDTS62hpYS+YMvjpRZ1EBeLzOpAo5Lvk5ymFFOGNvM83GyBzbQAOytWRs60ZAcVK4nP0A2lWeg8oENT6jCew+KgOECH1kQq1Ya6289hcOiQaxLT8zdeLBJvODcS2BeHHz4c/bS0t6KM9bDoMWtN4R9Jpo+nslxxefe9OrY9Lgf9j9d1txDKDzpuPEmwO9Bv4Xa3qFc4LOq1w1XMah+2W8v1Jfmus8/3LafdeV5TEjtfZnVuf5VssyvJ9vB0l16l87/cnVeY3fHm5QFdk2/N9fmx+nh6iV33N6bNZ+M=
 sidebar_class_name: "get api-method"
 info_path: docs/api/jatrix-api
 custom_edit_url: null
@@ -24,38 +24,22 @@ import Translate from "@docusaurus/Translate";
   as={"h1"}
   className={"openapi__heading"}
   children={"Readiness check"}
->
-</Heading>
+></Heading>
 
 <MethodEndpoint
   method={"get"}
   path={"/ready"}
   context={"endpoint"}
->
-  
-</MethodEndpoint>
-
-
+></MethodEndpoint>
 
 Returns readiness status. Verifies database connectivity.
 
-<ParamsDetails
-  parameters={undefined}
->
-  
-</ParamsDetails>
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
 
-<RequestSchema
-  {...require("./get-ready.RequestSchema.json")}
->
-  
-</RequestSchema>
+<ParamsDetails {...require("./get-ready.ParamsDetails.json")}></ParamsDetails>
 
-<StatusCodes
-  {...require("./get-ready.StatusCodes.json")}
->
-  
-</StatusCodes>
+<RequestSchema {...require("./get-ready.RequestSchema.json")}></RequestSchema>
 
-
-      
+<StatusCodes {...require("./get-ready.StatusCodes.json")}></StatusCodes>

@@ -1,0 +1,156 @@
+{
+  "responses": {
+    "200": {
+      "description": "Tokens issued",
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "access_token": { "type": "string" },
+                  "refresh_token": { "type": "string" },
+                  "expires_in": {
+                    "type": "integer",
+                    "description": "Seconds until expiry"
+                  },
+                  "token_type": { "type": "string", "enum": ["Bearer"] }
+                }
+              },
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "request_id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "X-Request-ID from request or generated"
+                  },
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "ISO-8601 timestamp"
+                  }
+                },
+                "title": "Meta"
+              }
+            },
+            "title": "TokenResponse"
+          }
+        }
+      }
+    },
+    "400": {
+      "description": "Invalid input",
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "object",
+                "properties": {
+                  "code": { "type": "string" },
+                  "message": { "type": "string" },
+                  "details": { "type": "object" }
+                }
+              },
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "request_id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "X-Request-ID from request or generated"
+                  },
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "ISO-8601 timestamp"
+                  }
+                },
+                "title": "Meta"
+              }
+            },
+            "title": "Error"
+          }
+        }
+      }
+    },
+    "401": {
+      "description": "Invalid credentials",
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "object",
+                "properties": {
+                  "code": { "type": "string" },
+                  "message": { "type": "string" },
+                  "details": { "type": "object" }
+                }
+              },
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "request_id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "X-Request-ID from request or generated"
+                  },
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "ISO-8601 timestamp"
+                  }
+                },
+                "title": "Meta"
+              }
+            },
+            "title": "Error"
+          }
+        }
+      }
+    },
+    "403": {
+      "description": "User inactive or entitlement required",
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "object",
+                "properties": {
+                  "code": { "type": "string" },
+                  "message": { "type": "string" },
+                  "details": { "type": "object" }
+                }
+              },
+              "meta": {
+                "type": "object",
+                "properties": {
+                  "request_id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "X-Request-ID from request or generated"
+                  },
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "ISO-8601 timestamp"
+                  }
+                },
+                "title": "Meta"
+              }
+            },
+            "title": "Error"
+          }
+        }
+      }
+    }
+  }
+}

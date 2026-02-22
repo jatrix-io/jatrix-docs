@@ -1,0 +1,45 @@
+---
+id: get-tenant
+title: "Get tenant by ID"
+description: "Get tenant by ID"
+sidebar_label: "Get tenant by ID"
+hide_title: true
+hide_table_of_contents: true
+api: eJzlVt1v2zYQ/1cO99QCtJwUXbH6acGSFS42pEgydEAcNIx4tplSpEqevHqC/vfhKMWx42xNu77tyRbv++53Hy2GmqJmG/zU4AQXxBfktWdUyHqRcHKJ/UPCK4W1jroipiiEFr2uCCcY4mJqUKH1OMFa8xIVRvrU2EgGJxwbUpjKJVUaJy3yuhahxNH6BSqch1hpxgk2jTXYKTSUymhr8QkneBoX2tu/soswPcZObeza72Z0S+kfozP61FDi0fT4Tv2StKG4Y2CuXfovYf3sLHkepaaunSUDsTcK02OYhwhliJFcDrqAk3IZyID1ECnVwSeCilgX2F2JS/1TEideHBzIz66pTUHL4Jk8C4cWs2XWP75NwtbuxxJubqkUwToKStj2RozmJ3BZ86SshK3yfniiTF+ph4ydwuSaxeME1tykx5STbyoBuS7ZrggVpibV5A312BqerzqFZSTNZD5o/lcnjWYasa1I7Da1+WoZQ46+Skahb5zTN4563HedQrYsn3e17xQKYr5ctQGGT6rEQ0hvdw7MY6g2oA4RFuRlzlAuoLidWFf1kyPctTQ9Px39+OrgEO4VbQf9m4S6n4WzoVOw64T48uDlfq+cUQpNLAl8YJiHxpvv1zcUY4hfZiuDeRzdFaWkF4/TDLG2Lu1rz6H+n2t/krPe9TXfVfWGGDhDA27WkMd9RbwMwyKUBMlemeB4dTjeHlRp3Oad14178TRurelkeFBc3S3HJjpZHcx1mozHhqpQ3GqO9nNhw15Ux1QFOHo3hRstAL0SVWUTLa+zrhvSkeJRI95cXm2TzwV8ff22mTapFfs47Cn57plQDX9+uUv42/cXe069fX8BuiwpJeDwkTw8Ozt/8cOr5wWc3rC2HlZWw7vT8wuQBOmGl+PMV+QCWD8P2ZGhEG9z8BLkvqGeZBNoONf6HN6EFUWvfUlw4hfWU16K1pBny2sFVePYjnLyy7UCMR3iUBw189obqGMwTckjRytyIC0cgyvgYmlTTnSlvV5Qgp26qjuxpAZkJDXzTaKYFMTgSDgoVjalnl0sZaccVeQ5FTM/80fObTZ1gnlwLvwJ1y3I4lR5dU+ghft2U/dYhg666wJ+tYnvVcy89aVrDMF13vu1XlifHRY9zlaWFYT5PBEr4MDaZSUZ+QmaRDN/3UIePyIgA0bcyNNEwTA6oOtdE9GZR4UC5L48h8VBcTDMQV3mOTgcS33hZI1W2grcb2k+j7SmVFtPrjh8/frFTwuhFWWoMizqkLjSfkvJI224A48Nlpk+87h22vq8W6W/2qFFL3F1iLvXREKFk7vTdCimPFkjl+wyJBaxtpWO+z26rpPnTw1FabkrhSsdbb9UL1s0Nsn/+8PvgYebFYHPzoYb8Tk8PF3V44EMj9qvJevaNfKFCj/SenNcy4H6TT58m1G5s+TmGQ7fr8vAdzlt/8Ht3r0HN/rGfclSz3FUllTzFm1vccsQ3Uz7NycX2HV/A5qreu8=
+sidebar_class_name: "get api-method"
+info_path: docs/api/jatrix-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get tenant by ID"}
+></Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/organizations/{orgId}/tenants/{id}"}
+  context={"endpoint"}
+></MethodEndpoint>
+
+Get tenant by ID
+
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails {...require("./get-tenant.ParamsDetails.json")}></ParamsDetails>
+
+<RequestSchema {...require("./get-tenant.RequestSchema.json")}></RequestSchema>
+
+<StatusCodes {...require("./get-tenant.StatusCodes.json")}></StatusCodes>

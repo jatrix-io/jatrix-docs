@@ -1,0 +1,49 @@
+---
+id: refresh-token
+title: "Refresh token"
+description: "Exchanges a valid refresh token for new access and refresh tokens."
+sidebar_label: "Refresh token"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV99v2zYQ/lcO97QBtBxnW9HqaWmbDQ62pbBddIAdJIx0tplSpEpSTjxB//twlBw7dtIWWJ66+sWSeDzej+++O9ZoS3IyKGuGOaboaO7ILyf2IxkUGOTCYzrFkyosyQSVRUm8EJiTz5wq42uKp3fZUpoFeZCwklrl0CmCwJpgbh0YugWZZeQ9SLMn4BMU6CmrnAprTKcXAh19qsiH1zZfY1rHV+UoxzS4igRm1gQygZdkWerOsv6NZ3tq9NmSCslPYV0SpmivbygLKHYUTTfeXkYb2KvScTiCIt+eubu81eWDU2aBTSMwqKD502gnbkNTVgGbhtcd+dIa3+o7Pjriv4eh+4tuuxiA8r6iHP+Dcw/tz2X4Cqk2J086Kb4YBoF0VypH/lLtLisTaEEO97Eypsya3ENlgtIQt65ZSVR/2W7eP0MgmarglL0m6cjhRYxuQV/jYIekS5U/pnhuXSEDplhVKj8w9u/eqN3dG76FubMFdNrAOliQ4dqhPJqvCvJBFuVnD8lloB6LHpw0HJ/3Xr44GsBW0S7A/mRXdz9EqI06eHVo+/kxgA1NW5EqwvLZwEXOWfdlsczmj+Qz5s57uXh8LacglfaH2v/3WT+NUd9ke/B0tq1rS4v2mPY7AL4lAPx0CID3nhwoI7OgVvQ9299KthuBpXSyoECOR7IajSxoz3gUyC0YlyTz2Hm3w85cak/iMN1PhKjZt/yNVmRCz1eMoUgqbYQ4YtZBZp0jHaGVwGm2tMQNBzbjD3ASE2wuYjqXlkfN0vqYRhmWmGJ/NejLKiz7HVvFedCtNs5WTrNfIZQ+7fdzKmxyI4NTd4myB1F+S4WFk3dDuJbcGi+2o+WY3W8Bcx0HCR5sd6LBB2AXJX5vhVB0D79tYnT2YXJw6tmHyWa+bYfeH0bj419e/JjA+XWQysBKSXh3Pp7Ava9RLokZ53ocbUfe0ztZlJoemUJ36kaZuY3Gd2g5ixFhzw+Na5cUD+hjKcfwu12RM9JkBKdmoQzFNKqcp/ywFlBUOqheIBZZC2BzrVP/xAyLmeEJvnQ2r7LQ07QiDcwzzuoEJkvlY/QLaSRfCaxbSNNt9WKzzQuI2oMXM1N5cl6As5pYglyhvG/F+aRolKaCTPDJzMzMidb32PIwt1rbW7iqgSdeEcGWQg1bThDbgoMGmqsE/lA+bFXMjDKZrnKCq4jUUi6UiQazHq0KFQTY+dxTEBBskDoqieXpofI0M1c1RI7kDcyCbEakPAEdv0HTmsZbZ9yIGd1tegbJUXLUkbXMIll35d0mjgfgQiqugRuazx2tyZfKkE4Gr14d/7rgtSSzRYQSF1YhzY6S0d4E8AAb9bZFPM89rqulQHehX2qpDGM1FnDdVfsUVwMUyKDC+/sF37+WzAnpFOuaS/e9003Dnz9V5Lpr4Uo6Ja8Z7tOLRmyYjikiV54Xtlz3pJfPwmVP+PmR1oekvJK6YlFsRN1JvGmt6U1YyVbioEVvd5xkGZXhs7K79MpMw8TV3Z+L2JjRyVuOuLxlawTaGJ22gfK3GrU0iyo2amx18u9fAlmcDQ==
+sidebar_class_name: "post api-method"
+info_path: docs/api/jatrix-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Refresh token"}
+></Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/auth/refresh"}
+  context={"endpoint"}
+></MethodEndpoint>
+
+Exchanges a valid refresh token for new access and refresh tokens.
+
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./refresh-token.ParamsDetails.json")}
+></ParamsDetails>
+
+<RequestSchema
+  {...require("./refresh-token.RequestSchema.json")}
+></RequestSchema>
+
+<StatusCodes {...require("./refresh-token.StatusCodes.json")}></StatusCodes>

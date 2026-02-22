@@ -8877,6 +8877,7 @@ __metadata:
     clsx: ^2.0.0
     docusaurus-plugin-openapi-docs: 4.7.1
     docusaurus-theme-openapi-docs: 4.7.1
+    prettier: ^3.8.1
     prism-react-renderer: ^2.3.0
     react: ^19.0.0
     react-dom: ^19.0.0
@@ -12171,6 +12172,15 @@ __metadata:
   dependencies:
     punycode: ^2.3.1
   checksum: 55f9f1e9d5d3d6d6ee3c0d2ef204535263e5a14679c52e9e626ae3a876c99984ec6fa266723989578184292ce85a06db3ee4c795390541cac9d6e830dc92c235
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^3.8.1":
+  version: 3.8.1
+  resolution: "prettier@npm:3.8.1"
+  bin:
+    prettier: bin/prettier.cjs
+  checksum: 36fe4ecd95751aa17fea70b48afd5086e88002988238112fc1be30a5307af6983e1833be790b0cc1c54702b71f73b12bfec12c05166d7619e3151ab221654297
   languageName: node
   linkType: hard
 

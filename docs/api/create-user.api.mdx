@@ -1,0 +1,45 @@
+---
+id: create-user
+title: "Create user"
+description: "Create user"
+sidebar_label: "Create user"
+hide_title: true
+hide_table_of_contents: true
+api: eJztWNtuGzcQ/RVinhKAkuwgDRo9xY3dQkELB7aDFJANm94dSXS45IYcylaF/fdiuCtpdbHiXIo+tH6xdndunDlzOOQcXIlekXZ2kEMfMo+K8ENADxJIjQP0h8CPAa4klMqrAomf+sM5WFUg9MH58SAHCdpCH0pFE5Dg8XPUHnPok48oIWQTLBT050CzkpUCeW3HIGHkfKEI+hCjzqGSkGPIvC45JOjDqR8rq/9KEYrBMVRy6ZfQKkv/nOuLZH/D6Z+dM/wcMVBncLxwPEGVp4StXI+UCd/j+63RaKkTYlkajbnwtVMxOBYj50XmvEeTktIVJ9nEYS60FR5D6WxAUSCpLlRXdUgY6BeXzziMzeRkzhJa4k+KXWXJZu8ucBTz7fjd7R1mtLbUIcSAPqWHERLCvfN5QotnbJHGwAaWQlvJqFpq+zK1FKokYKG02StdS3BidSiNml0/6hwfiEMz13qH/0pCIEUx7HKGNhacAJWRnmKCw/JniKFEm2NKRY4jFQ2H1XyvJGQxkCuuFZHXt5EwbKe5qiSQJsOv3i47c2DLyN/466LiSfnFwSH/W0cSa4i6rblTvrng69XMFT1BaldCd0DftXp8ZxF26NTN/1TpvSWWYKMx6pbTzF1Ryf1g3Q+oHdaeCtYdqt+NvUqCUYGujRtre61obxi5IuyQTp28FUqDoafb4DyW+Vfr5Gjwq3S2Ym11DaP/KMtctMS2mRe/DNuGM58Erk3ibu8PYuRdsaRu58UYLW+2WCNYFxhIFeWTl7nuaXB+2vn51cGhWBlqr/wPXupmKs4aumjY4+XBwTZhDOxUGc37CdPMD2MM9N75L4tlLt/ddQWGoMaPdCSS0mYngf7Hi36Ssr6o9svtap9hcNFnKKwjMXLR/sBN4v+S/7sl354qE4WLWI/3BdLE8dBfupCSw/NzH3rTw157Rw69eZrwq16954befDF5V72YjgYSAvrp4lgQveGhmKgM/V4vx8J17xR5/dDVbmt1x1g4cfR+IG4V09IVm8qi1zRLtm5RefRHkSMbXrU/nzMI6zq2hZYpZv/QTOD8XAuBbH78ukj8u48XW0G9+3ghVJZhCILcJ7Ti2dn5i59ePe+K01tS2oqpVuL96fmF4GSpSJNekuumQnCbnK3G7pMHVZQG12fgFQJWo29rb68HhiT/Bmv9buYK2Bw+WirtCWf1ejE/rMaEXWMnR63tyKX0NTB6l0rGpdlOT/1JB6HEuVLn4jc3Zec2Q3Fix9piOqToHC1pmklRREO6k1CTzaTghDnfwEteWmVzUXqXx4w6BqdoBBOQd6YrLiY6JHgUyqoxBrGGTLlQC1I04JSXNmFSCu8MsgT6QodQi7OnFJTBAi2F7qW9tEfGLE9OQYycMe5e3MwFz7gyHaX6Yi5WZCFXnSgqUd10xe860MrEpdU2MzFHcZPOYaUaa5sCZjtGF5qkcKNRQJKCHCmTjKS+Ddycl/ZmLhJ5sgLTI4eRuFCKhvhEVYfGqpcWJHD71eU57B50DxoWV1li8QYtdeFaALvD0cjjDEOpLZru4evXL96M+VtCG8OCuaFQtmVknUTWkLFsPsIH6pVGaZumQJ+m35pfhjA9hPWZnwmkv7hFaOrIr1oH/Li4gpgwV/WHMJ8zYXzwpqr49eeInhnjSsJUeV0Pg8M5twv/Xp3IN+Jd7nTw7Kw50T4Xm3cOcveympfKzjj9ykR+AgmfcLa8FeGbg2+KYXX58E3el6mr+ATQXFB8XUJ+yBXEI8HXQW7cpSwXwUmrJd7W0XQu2MhKYmsoWWkcZRmWtFf2qrX1MYnzntBcjxRpFAGv7vmKQ93XKXVljVIeGfjdHIyy45hGE6ht8t/flquqcA==
+sidebar_class_name: "post api-method"
+info_path: docs/api/jatrix-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create user"}
+></Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/organizations/{orgId}/tenants/{tenantId}/users"}
+  context={"endpoint"}
+></MethodEndpoint>
+
+Create user
+
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails {...require("./create-user.ParamsDetails.json")}></ParamsDetails>
+
+<RequestSchema {...require("./create-user.RequestSchema.json")}></RequestSchema>
+
+<StatusCodes {...require("./create-user.StatusCodes.json")}></StatusCodes>

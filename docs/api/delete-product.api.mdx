@@ -1,0 +1,49 @@
+---
+id: delete-product
+title: "Delete product (soft delete)"
+description: "Delete product (soft delete)"
+sidebar_label: "Delete product (soft delete)"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVttu4zYQ/ZXBPCUALSfBdtHVU4PaLRxskSB2sQXioGGkkc0sRSok5a4r6N+LoeRbnDbtdp8kkXM5M2cuatBW5GRQ1kxyTDEnTYFunM3rLKDAIBce0zvsTzzeC6ykkyUFcnzToJElYYrWLSY5ClQGU6xkWKJAR8+1cpRjGlxNAn22pFJi2mBYV6zkg1NmgQIL60oZMMW6Vjm2AnPymVMVA8MUr91CGvVnxAmTEbZi61d9M6d7Rn8b3NJzTT4MJqON+SXJnNyBg0Jq/3/C+lErMmHg66rSinJwnVOYjKCwDjLrHOkYdALjbGkpB2XAka+s8QQlBZlge8+QuiPPIC7O3vHj0FVPIHQERyzvXpO7JW9rlxEYG6CwteH0ZtYEMoGlJUPNIqbhk2eV5jh++/hEsXwqx+UVVAeMnLPubbHM5nSczFZgSd7Lxet3OQWptD+23rZRM/wLfH36f1f521y+pHK/YqBwttySaR0syHCTdWkPqiQfZFn9o5NcBhqw6JGnyfR68P37s3PYGWqj2aDZ1C8c6v7BOGa9bWMiDk2NYjFA1dfGibfFpkJOMWZtaXdTgfPFLZbicHU+tHst6YdNbP922Jvyw0blLQr05FabQVE7zW0UQuXT4TCn0iZPMjj1JVH2KMoRlRYubybwKD3FGveU1U6FdbT1SNKRu6wZzt39/vWUi7Hjc19om2r2j33P8ncnhKJ/+WlDwNWn2RGoq08zkFlG3kOwn8nAye304rv3pwlcPwapDKyUhJvr6Qw4Q7IOy2GUSyIhyhQ2AumJuYrBc5DHjror5UHCVMop/GxX5Iw0GcHYLJShOCBUTiaosBZQ1jqoQSAWWQtg19b17Ii5kSbfsDzQtCIN3NLO6gRmS+Vjoktp5II8HBArNmpeQLQevJib2pPzApzVxBLkSuV9J86eIihNJZngk7mZm0utt1PLQ2G1tn/AQwO5DFLEMZZCA7v2E7vahhbahwQ+Kh92JuZGmUzXOcFDnIGVXCgTAbMdrUoVBNii8BQEBBukjkZiJ3ioPc3NQwNxHLECDxyGEaeLgH6UQNtBY9W5QYFcyB0958lZctbPRZnFudgvjo44FEilVFzuT1QUjtbkK2VIJ+cfPlz8sOC7JLNlLIvK+lBKs2fkjbY8KJVtXQf6EoaVlsrwkIm91vT9eoercxR4QCwKTDcre0Mxn6mcV/zS+sB6TcPt96vTbcvHzzU57r97gSvplHzkOr5rMFee33cb8QXE7f7Ak9t+eZ7Cy50uXo+kP5RmzRRIXfMXCvxM6+1fB2/ur8LwdU55ld+3YvNH8N8y8E12/t/A7uC9+HnZwucsdRKXWUZV2Ls72uo8UbfjfzT+OJ6NsW3/AhAugGA=
+sidebar_class_name: "delete api-method"
+info_path: docs/api/jatrix-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete product (soft delete)"}
+></Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/v1/organizations/{orgId}/products/{id}"}
+  context={"endpoint"}
+></MethodEndpoint>
+
+Delete product (soft delete)
+
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./delete-product.ParamsDetails.json")}
+></ParamsDetails>
+
+<RequestSchema
+  {...require("./delete-product.RequestSchema.json")}
+></RequestSchema>
+
+<StatusCodes {...require("./delete-product.StatusCodes.json")}></StatusCodes>

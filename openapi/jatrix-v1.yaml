@@ -5,45 +5,1773 @@ info:
     Jatrix is a SaaS Governance Engine for identity, multi-tenancy, authorization,
     and product-level control. This API manages organizations, products, tenants,
     users, roles, permissions, and entitlements.
+
+    All responses follow `{ data, meta: { request_id, timestamp } }`. List responses
+    include `meta.pagination: { limit, offset, total }`. Errors use
+    `{ error: { code, message, details }, meta }`.
   version: 1.0.0
   contact:
     name: Jatrix
+    email: jeffreyespinel.1992@gmail.com
+
 servers:
   - url: https://demo.jatrix.io
     description: Demo API base
+
+tags:
+  - name: Health
+    description: Health and readiness endpoints
+  - name: Authentication
+    description: Token and refresh endpoints
+  - name: Organizations
+    description: Organization management
+  - name: Products
+    description: Product management
+  - name: Tenants
+    description: Tenant management
+  - name: Users
+    description: User account management
+  - name: Permissions
+    description: Permission management
+  - name: Roles
+    description: Role management
+  - name: Role Permissions
+    description: Role-permission assignments
+  - name: Role Assignments
+    description: User role assignments
+  - name: Entitlements
+    description: Tenant-product entitlements
+
+security:
+  - bearerAuth: []
+
 paths:
   /health:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
     get:
       operationId: getHealth
-      tags:
-        - Health
+      tags: [Health]
       summary: Health check
       description: Returns API health status. Used for load balancer probes.
+      security: []
       x-codeSamples:
         - lang: cURL
           label: cURL
           source: |
             curl -L 'https://demo.jatrix.io/health'
       responses:
-        '200':
+        "200":
           description: API is healthy
+
   /ready:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
     get:
       operationId: getReady
-      tags:
-        - Health
+      tags: [Health]
       summary: Readiness check
       description: Returns readiness status. Verifies database connectivity.
+      security: []
       x-codeSamples:
         - lang: cURL
           label: cURL
           source: |
             curl -L 'https://demo.jatrix.io/ready'
       responses:
-        '200':
+        "200":
           description: API is ready to serve traffic
-        '503':
+        "503":
           description: API is not ready (e.g. database unavailable)
-tags:
-  - name: Health
-    description: Health and readiness endpoints
+
+  /v1/auth/token:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    post:
+      operationId: createToken
+      tags: [Authentication]
+      summary: Create token
+      description: Authenticates with identifier (username or email) and password. Returns access and refresh tokens.
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateTokenInput"
+      responses:
+        "200":
+          description: Tokens issued
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TokenResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          description: Invalid credentials
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "403":
+          description: User inactive or entitlement required
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /v1/auth/refresh:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    post:
+      operationId: refreshToken
+      tags: [Authentication]
+      summary: Refresh token
+      description: Exchanges a valid refresh token for new access and refresh tokens.
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RefreshTokenInput"
+      responses:
+        "200":
+          description: New tokens issued
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TokenResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          description: Invalid or expired refresh token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "403":
+          description: User inactive
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /v1/organizations:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: listOrganizations
+      tags: [Organizations]
+      summary: List organizations
+      parameters:
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/offset"
+      responses:
+        "200":
+          description: List of organizations
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrganizationListResponse"
+    post:
+      operationId: createOrganization
+      tags: [Organizations]
+      summary: Create organization
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateOrganizationInput"
+      responses:
+        "201":
+          description: Organization created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrganizationResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+
+  /v1/organizations/{orgId}:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: getOrganization
+      tags: [Organizations]
+      summary: Get organization by ID
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+      responses:
+        "200":
+          description: Organization
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrganizationResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    patch:
+      operationId: updateOrganization
+      tags: [Organizations]
+      summary: Update organization
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateOrganizationInput"
+      responses:
+        "200":
+          description: Organization updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrganizationResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    delete:
+      operationId: deleteOrganization
+      tags: [Organizations]
+      summary: Delete organization (soft delete)
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+      responses:
+        "204":
+          description: Organization deleted
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /v1/organizations/{orgId}/products:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: listProducts
+      tags: [Products]
+      summary: List products
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/offset"
+      responses:
+        "200":
+          description: List of products
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProductListResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    post:
+      operationId: createProduct
+      tags: [Products]
+      summary: Create product
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateProductInput"
+      responses:
+        "201":
+          description: Product created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProductResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /v1/organizations/{orgId}/products/{id}:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: getProduct
+      tags: [Products]
+      summary: Get product by ID
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/id"
+      responses:
+        "200":
+          description: Product
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProductResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    patch:
+      operationId: updateProduct
+      tags: [Products]
+      summary: Update product
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/id"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateProductInput"
+      responses:
+        "200":
+          description: Product updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProductResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    delete:
+      operationId: deleteProduct
+      tags: [Products]
+      summary: Delete product (soft delete)
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/id"
+      responses:
+        "204":
+          description: Product deleted
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /v1/organizations/{orgId}/tenants:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: listTenants
+      tags: [Tenants]
+      summary: List tenants
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/offset"
+      responses:
+        "200":
+          description: List of tenants
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TenantListResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    post:
+      operationId: createTenant
+      tags: [Tenants]
+      summary: Create tenant
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateTenantInput"
+      responses:
+        "201":
+          description: Tenant created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TenantResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /v1/organizations/{orgId}/tenants/{id}:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: getTenant
+      tags: [Tenants]
+      summary: Get tenant by ID
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/id"
+      responses:
+        "200":
+          description: Tenant
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TenantResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    patch:
+      operationId: updateTenant
+      tags: [Tenants]
+      summary: Update tenant
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/id"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateTenantInput"
+      responses:
+        "200":
+          description: Tenant updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TenantResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    delete:
+      operationId: deleteTenant
+      tags: [Tenants]
+      summary: Delete tenant (soft delete)
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/id"
+      responses:
+        "204":
+          description: Tenant deleted
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /v1/organizations/{orgId}/tenants/{tenantId}/users:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: listUsers
+      tags: [Users]
+      summary: List users
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/offset"
+      responses:
+        "200":
+          description: List of users
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserListResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    post:
+      operationId: createUser
+      tags: [Users]
+      summary: Create user
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/tenantId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateUserInput"
+      responses:
+        "201":
+          description: User created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /v1/organizations/{orgId}/tenants/{tenantId}/users/{id}:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: getUser
+      tags: [Users]
+      summary: Get user by ID
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/id"
+      responses:
+        "200":
+          description: User
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    patch:
+      operationId: updateUser
+      tags: [Users]
+      summary: Update user
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/id"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateUserInput"
+      responses:
+        "200":
+          description: User updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    delete:
+      operationId: deleteUser
+      tags: [Users]
+      summary: Delete user (soft delete)
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/id"
+      responses:
+        "204":
+          description: User deleted
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /v1/organizations/{orgId}/products/{productId}/permissions:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: listPermissions
+      tags: [Permissions]
+      summary: List permissions
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/productId"
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/offset"
+      responses:
+        "200":
+          description: List of permissions
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PermissionListResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    post:
+      operationId: createPermission
+      tags: [Permissions]
+      summary: Create permission
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/productId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreatePermissionInput"
+      responses:
+        "201":
+          description: Permission created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PermissionResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /v1/organizations/{orgId}/products/{productId}/permissions/{id}:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: getPermission
+      tags: [Permissions]
+      summary: Get permission by ID
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/productId"
+        - $ref: "#/components/parameters/id"
+      responses:
+        "200":
+          description: Permission
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PermissionResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    patch:
+      operationId: updatePermission
+      tags: [Permissions]
+      summary: Update permission
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/productId"
+        - $ref: "#/components/parameters/id"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdatePermissionInput"
+      responses:
+        "200":
+          description: Permission updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PermissionResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    delete:
+      operationId: deletePermission
+      tags: [Permissions]
+      summary: Delete permission (soft delete)
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/productId"
+        - $ref: "#/components/parameters/id"
+      responses:
+        "204":
+          description: Permission deleted
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /v1/organizations/{orgId}/products/{productId}/roles:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: listRoles
+      tags: [Roles]
+      summary: List roles
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/productId"
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/offset"
+      responses:
+        "200":
+          description: List of roles
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RoleListResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    post:
+      operationId: createRole
+      tags: [Roles]
+      summary: Create role
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/productId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateRoleInput"
+      responses:
+        "201":
+          description: Role created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RoleResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /v1/organizations/{orgId}/products/{productId}/roles/{id}:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: getRole
+      tags: [Roles]
+      summary: Get role by ID
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/productId"
+        - $ref: "#/components/parameters/id"
+      responses:
+        "200":
+          description: Role
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RoleResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    patch:
+      operationId: updateRole
+      tags: [Roles]
+      summary: Update role
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/productId"
+        - $ref: "#/components/parameters/id"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateRoleInput"
+      responses:
+        "200":
+          description: Role updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RoleResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    delete:
+      operationId: deleteRole
+      tags: [Roles]
+      summary: Delete role (soft delete)
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/productId"
+        - $ref: "#/components/parameters/id"
+      responses:
+        "204":
+          description: Role deleted
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /v1/organizations/{orgId}/products/{productId}/roles/{roleId}/permissions:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: listRolePermissions
+      tags: [Role Permissions]
+      summary: List permissions for role
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/productId"
+        - $ref: "#/components/parameters/roleId"
+      responses:
+        "200":
+          description: List of permissions assigned to role
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PermissionsDataResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    put:
+      operationId: setRolePermissions
+      tags: [Role Permissions]
+      summary: Set permissions for role
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/productId"
+        - $ref: "#/components/parameters/roleId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SetPermissionsInput"
+      responses:
+        "200":
+          description: Permissions updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PermissionsDataResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /v1/organizations/{orgId}/role-assignments:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: listRoleAssignments
+      tags: [Role Assignments]
+      summary: List role assignments
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - name: tenant_id
+          in: query
+          schema:
+            type: string
+            format: uuid
+          description: Filter by tenant ID
+        - name: product_id
+          in: query
+          schema:
+            type: string
+            format: uuid
+          description: Filter by product ID
+        - name: user_id
+          in: query
+          schema:
+            type: string
+            format: uuid
+          description: Filter by user ID
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/offset"
+      responses:
+        "200":
+          description: List of role assignments
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RoleAssignmentListResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    post:
+      operationId: createRoleAssignment
+      tags: [Role Assignments]
+      summary: Create role assignment
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateRoleAssignmentInput"
+      responses:
+        "201":
+          description: Role assignment created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RoleAssignmentResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /v1/organizations/{orgId}/role-assignments/{id}:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: getRoleAssignment
+      tags: [Role Assignments]
+      summary: Get role assignment by ID
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/id"
+      responses:
+        "200":
+          description: Role assignment
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RoleAssignmentResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    delete:
+      operationId: deleteRoleAssignment
+      tags: [Role Assignments]
+      summary: Delete role assignment (soft delete)
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/id"
+      responses:
+        "204":
+          description: Role assignment deleted
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /v1/organizations/{orgId}/entitlements:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: listEntitlements
+      tags: [Entitlements]
+      summary: List entitlements
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - name: tenant_id
+          in: query
+          schema:
+            type: string
+            format: uuid
+          description: Filter by tenant ID
+        - name: product_id
+          in: query
+          schema:
+            type: string
+            format: uuid
+          description: Filter by product ID
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/offset"
+      responses:
+        "200":
+          description: List of entitlements
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EntitlementListResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    post:
+      operationId: createEntitlement
+      tags: [Entitlements]
+      summary: Create entitlement
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateEntitlementInput"
+      responses:
+        "201":
+          description: Entitlement created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EntitlementResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          description: Tenant already has entitlement to product
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /v1/organizations/{orgId}/entitlements/{id}:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: getEntitlement
+      tags: [Entitlements]
+      summary: Get entitlement by ID
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/id"
+      responses:
+        "200":
+          description: Entitlement
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EntitlementResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    patch:
+      operationId: updateEntitlement
+      tags: [Entitlements]
+      summary: Update entitlement
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/id"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateEntitlementInput"
+      responses:
+        "200":
+          description: Entitlement updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EntitlementResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    delete:
+      operationId: deleteEntitlement
+      tags: [Entitlements]
+      summary: Delete entitlement (soft delete)
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/id"
+      responses:
+        "204":
+          description: Entitlement deleted
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT access token (RS256). Obtain via POST /v1/auth/token.
+
+  parameters:
+    xRequestId:
+      name: X-Request-ID
+      in: header
+      required: false
+      schema:
+        type: string
+        format: uuid
+      description: Client-supplied request ID for correlation. Echoed in response meta.
+    orgId:
+      name: orgId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Organization ID
+    tenantId:
+      name: tenantId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Tenant ID
+    productId:
+      name: productId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Product ID
+    roleId:
+      name: roleId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Role ID
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+      description: Pagination limit
+    offset:
+      name: offset
+      in: query
+      schema:
+        type: integer
+        default: 0
+      description: Pagination offset
+
+  responses:
+    BadRequest:
+      description: Invalid input
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+
+  schemas:
+    Meta:
+      type: object
+      properties:
+        request_id:
+          type: string
+          format: uuid
+          description: X-Request-ID from request or generated
+        timestamp:
+          type: string
+          format: date-time
+          description: ISO-8601 timestamp
+    Pagination:
+      type: object
+      properties:
+        limit:
+          type: integer
+        offset:
+          type: integer
+        total:
+          type: integer
+
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            details:
+              type: object
+        meta:
+          $ref: "#/components/schemas/Meta"
+
+    CreateTokenInput:
+      type: object
+      required: [organization_id, tenant_id, product_id, identifier, password]
+      properties:
+        organization_id:
+          type: string
+          format: uuid
+        organization_slug:
+          type: string
+        tenant_id:
+          type: string
+          format: uuid
+        tenant_slug:
+          type: string
+        product_id:
+          type: string
+          format: uuid
+        product_slug:
+          type: string
+        identifier:
+          type: string
+          description: Username or email
+        password:
+          type: string
+          format: password
+    RefreshTokenInput:
+      type: object
+      required: [refresh_token]
+      properties:
+        refresh_token:
+          type: string
+    TokenResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            access_token:
+              type: string
+            refresh_token:
+              type: string
+            expires_in:
+              type: integer
+              description: Seconds until expiry
+            token_type:
+              type: string
+              enum: [Bearer]
+        meta:
+          $ref: "#/components/schemas/Meta"
+
+    Organization:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        slug:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        deleted_at:
+          type: string
+          format: date-time
+          nullable: true
+    CreateOrganizationInput:
+      type: object
+      required: [name, slug]
+      properties:
+        name:
+          type: string
+        slug:
+          type: string
+    UpdateOrganizationInput:
+      type: object
+      properties:
+        name:
+          type: string
+        slug:
+          type: string
+    OrganizationResponse:
+      type: object
+      properties:
+        data:
+          $ref: "#/components/schemas/Organization"
+        meta:
+          $ref: "#/components/schemas/Meta"
+    OrganizationListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Organization"
+        meta:
+          type: object
+          properties:
+            pagination:
+              $ref: "#/components/schemas/Pagination"
+            request_id:
+              type: string
+              format: uuid
+            timestamp:
+              type: string
+              format: date-time
+
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        organization_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        slug:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        deleted_at:
+          type: string
+          format: date-time
+          nullable: true
+    CreateProductInput:
+      type: object
+      required: [name, slug]
+      properties:
+        name:
+          type: string
+        slug:
+          type: string
+    UpdateProductInput:
+      type: object
+      properties:
+        name:
+          type: string
+        slug:
+          type: string
+    ProductResponse:
+      type: object
+      properties:
+        data:
+          $ref: "#/components/schemas/Product"
+        meta:
+          $ref: "#/components/schemas/Meta"
+    ProductListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Product"
+        meta:
+          type: object
+          properties:
+            pagination:
+              $ref: "#/components/schemas/Pagination"
+            request_id:
+              type: string
+              format: uuid
+            timestamp:
+              type: string
+              format: date-time
+
+    Tenant:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        organization_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        slug:
+          type: string
+        status:
+          type: string
+          enum: [active, suspended, inactive]
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        deleted_at:
+          type: string
+          format: date-time
+          nullable: true
+    CreateTenantInput:
+      type: object
+      required: [name, slug, status]
+      properties:
+        name:
+          type: string
+        slug:
+          type: string
+        status:
+          type: string
+          enum: [active, suspended, inactive]
+    UpdateTenantInput:
+      type: object
+      properties:
+        name:
+          type: string
+        slug:
+          type: string
+        status:
+          type: string
+          enum: [active, suspended, inactive]
+    TenantResponse:
+      type: object
+      properties:
+        data:
+          $ref: "#/components/schemas/Tenant"
+        meta:
+          $ref: "#/components/schemas/Meta"
+    TenantListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Tenant"
+        meta:
+          type: object
+          properties:
+            pagination:
+              $ref: "#/components/schemas/Pagination"
+            request_id:
+              type: string
+              format: uuid
+            timestamp:
+              type: string
+              format: date-time
+
+    UserAccount:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        organization_id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        external_id:
+          type: string
+          nullable: true
+        username:
+          type: string
+        display_name:
+          type: string
+          nullable: true
+        email:
+          type: string
+          format: email
+          nullable: true
+        status:
+          type: string
+          enum: [active, inactive, suspended]
+        last_login_at:
+          type: string
+          format: date-time
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        deleted_at:
+          type: string
+          format: date-time
+          nullable: true
+    CreateUserInput:
+      type: object
+      required: [username, password]
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+          format: password
+        email:
+          type: string
+          format: email
+        display_name:
+          type: string
+        external_id:
+          type: string
+        status:
+          type: string
+          enum: [active, inactive, suspended]
+          default: active
+        custom_attributes:
+          type: object
+    UpdateUserInput:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        display_name:
+          type: string
+        password:
+          type: string
+          format: password
+        status:
+          type: string
+          enum: [active, inactive, suspended]
+        custom_attributes:
+          type: object
+    UserResponse:
+      type: object
+      properties:
+        data:
+          $ref: "#/components/schemas/UserAccount"
+        meta:
+          $ref: "#/components/schemas/Meta"
+    UserListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/UserAccount"
+        meta:
+          type: object
+          properties:
+            pagination:
+              $ref: "#/components/schemas/Pagination"
+            request_id:
+              type: string
+              format: uuid
+            timestamp:
+              type: string
+              format: date-time
+
+    Permission:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        product_id:
+          type: string
+          format: uuid
+        key:
+          type: string
+        description:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        deleted_at:
+          type: string
+          format: date-time
+          nullable: true
+    CreatePermissionInput:
+      type: object
+      required: [key]
+      properties:
+        key:
+          type: string
+        description:
+          type: string
+    UpdatePermissionInput:
+      type: object
+      properties:
+        key:
+          type: string
+        description:
+          type: string
+    PermissionResponse:
+      type: object
+      properties:
+        data:
+          $ref: "#/components/schemas/Permission"
+        meta:
+          $ref: "#/components/schemas/Meta"
+    PermissionsDataResponse:
+      type: object
+      description: Array of permissions (no pagination)
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Permission"
+        meta:
+          $ref: "#/components/schemas/Meta"
+    PermissionListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Permission"
+        meta:
+          type: object
+          properties:
+            pagination:
+              $ref: "#/components/schemas/Pagination"
+            request_id:
+              type: string
+              format: uuid
+            timestamp:
+              type: string
+              format: date-time
+
+    Role:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        product_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        deleted_at:
+          type: string
+          format: date-time
+          nullable: true
+    CreateRoleInput:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
+    UpdateRoleInput:
+      type: object
+      properties:
+        name:
+          type: string
+    RoleResponse:
+      type: object
+      properties:
+        data:
+          $ref: "#/components/schemas/Role"
+        meta:
+          $ref: "#/components/schemas/Meta"
+    RoleListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Role"
+        meta:
+          type: object
+          properties:
+            pagination:
+              $ref: "#/components/schemas/Pagination"
+            request_id:
+              type: string
+              format: uuid
+            timestamp:
+              type: string
+              format: date-time
+
+    SetPermissionsInput:
+      type: object
+      required: [permission_ids]
+      properties:
+        permission_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+
+    RoleAssignment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        organization_id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        product_id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+          format: uuid
+        role_id:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+        deleted_at:
+          type: string
+          format: date-time
+          nullable: true
+    CreateRoleAssignmentInput:
+      type: object
+      required: [tenant_id, product_id, user_id, role_id]
+      properties:
+        tenant_id:
+          type: string
+          format: uuid
+        product_id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+          format: uuid
+        role_id:
+          type: string
+          format: uuid
+    RoleAssignmentResponse:
+      type: object
+      properties:
+        data:
+          $ref: "#/components/schemas/RoleAssignment"
+        meta:
+          $ref: "#/components/schemas/Meta"
+    RoleAssignmentListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/RoleAssignment"
+        meta:
+          type: object
+          properties:
+            pagination:
+              $ref: "#/components/schemas/Pagination"
+            request_id:
+              type: string
+              format: uuid
+            timestamp:
+              type: string
+              format: date-time
+
+    Entitlement:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        organization_id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        product_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [active, suspended]
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        deleted_at:
+          type: string
+          format: date-time
+          nullable: true
+    CreateEntitlementInput:
+      type: object
+      required: [tenant_id, product_id, status]
+      properties:
+        tenant_id:
+          type: string
+          format: uuid
+        product_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [active, suspended]
+    UpdateEntitlementInput:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [active, suspended]
+    EntitlementResponse:
+      type: object
+      properties:
+        data:
+          $ref: "#/components/schemas/Entitlement"
+        meta:
+          $ref: "#/components/schemas/Meta"
+    EntitlementListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Entitlement"
+        meta:
+          type: object
+          properties:
+            pagination:
+              $ref: "#/components/schemas/Pagination"
+            request_id:
+              type: string
+              format: uuid
+            timestamp:
+              type: string
+              format: date-time

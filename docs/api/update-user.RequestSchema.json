@@ -1,0 +1,23 @@
+{
+  "title": "Body",
+  "body": {
+    "content": {
+      "application/json": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "email": { "type": "string", "format": "email" },
+            "display_name": { "type": "string" },
+            "password": { "type": "string", "format": "password" },
+            "status": {
+              "type": "string",
+              "enum": ["active", "inactive", "suspended"]
+            },
+            "custom_attributes": { "type": "object" }
+          },
+          "title": "UpdateUserInput"
+        }
+      }
+    }
+  }
+}

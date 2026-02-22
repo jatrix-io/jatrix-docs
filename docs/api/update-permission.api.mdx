@@ -1,0 +1,49 @@
+---
+id: update-permission
+title: "Update permission"
+description: "Update permission"
+sidebar_label: "Update permission"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV99v2zYQ/lcO99QCtJwUXbH6aVmTbS42JEhSdEBsNIx0tplSpEpSTj1B//twlGwpttemWYY9bHmJTB7v13dHflehLcjJoKwZZzjCsshkoDNyufJeWYMCg5x7HF1ht+hxKrCQTuYUyPFmhUbmhCO0bj7OUKAyOMJChgUKdPSpVI4yHAVXkkCfLiiXOKowrAo+5INTZo4CZ9blMrAbpcqwFpiRT50q2D0c4ambS6P+iN7C+BhrsbFbOJuVafjnbJ81BrbMqiez11P6++CcPpXkw2B8vFa/IJmRu2dgJrX/OxG90YpMGPiyKLSiDFxjFMbHMLMOUusc6ZjrBE7ShaUMlAFHvrDGE+QUZIL1tHGJfPjRZit2I7UmkAn8KVl1GnUMbz1brXb9tTe3lAYUjGFBLijyvPuRVrtBbQexs18LDCpoXnq3VcpjU5QB65pl1lFESy8ODvjfFt6bc9D0BCP9RKFlMjxASmUPArWt/A8PFH9UWgWaUmt5w3nluq4Fpo44KR9k+KJZztwgqJzYRpvIbzqTkaZvOrPja68kevdaLZAr+OswtNX9oPxut1i/k2HmbL5pMutgToZvXoqwsOs+yLx4cJT3LY0vTgffvzo4hE5RP/DfONT9mThvW6HtjJf7mmFsllIr7n9uoSfrA3LOuq+LpTajvTWbk/dyvn8voyCV9rvaY5T/ZehPYtbXaL/cRfucvC1dSmBsgJktzRNeff9D/u9CvsMCmlcSij7jyyksbNaQmpRZTSQ3IxwuD4e2x8H8sIp8rx62j5AfVhsiVg87nX5YqaxGgZ7ccs0YS6eZ2IRQ+NFwmFFuk1sZnPqcKLsT8THlFo7OxnAj+aqasqq0dCqsoq4bko7cUcluXk372xdcmA22faFN2tk+tiyKfzdCKNqPn9ZgvH1/uePU2/eXINOUvIdgP5KBZ+cXL7579TyB05sglYGlknB2enEJnDlZhsUwyiURHG6d8446nXyWeaFpQ326grhvtKt3ZWY2RtKi/DZmj7O062mzpTxIuJDyAn62S3JGmpTgxMyVocj5VEYmqLASkJc6qEEgFlkJYN+ta2EXEyNNBi3SA01L0sD3g7M6gcuF8hGpXBo5Jw/3Kkasj3kBUXvwYmJKT84LcFYTS3R1I4AtRac05WSCTyZmYo603hBRDzOrtb2D6wqYWInITEdQQdfLomsUqKG+TuBX5UOnYmKUSXWZEVxHWlvIuTLRYdajVa6CADubeQoCgg1SRyWxrTyUnibmuoJ4t/EBvr3YjXhVCWjvJagb1/johNuMO6GB5zA5SA7aS1am8ZJtZ4EGOBRIuVTcL7c0mzlakS+UIZ0cvn794oc57yWpzWNdFdaHXJqekn09vp/vBfochoWWKhKk2KFV2/1XuDxEgffQRIGj9cS3xpXX+tNYD03eUhkPjwvrA6usKu7nd07XNS9/KslxQ08FLqVTDYm7qjBTnr+7oWfL+83jhM/O2/noOWxPi2J/kO2iNCuGROqSf2FLlNt5loezR/nQmxofZb5L5KNdeJxhHhamtVjPnd8GwpNMln/hduPe1oi8cZ+z1Ei8abwZXLKSTmKHu3QnjtKUivBF2WnvbTw7unzzC78T7dibR8qCTt7xlC7vmmzaomkUpha8VqGWZl5GCoONUv77E4kVDNI=
+sidebar_class_name: "patch api-method"
+info_path: docs/api/jatrix-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update permission"}
+></Heading>
+
+<MethodEndpoint
+  method={"patch"}
+  path={"/v1/organizations/{orgId}/products/{productId}/permissions/{id}"}
+  context={"endpoint"}
+></MethodEndpoint>
+
+Update permission
+
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./update-permission.ParamsDetails.json")}
+></ParamsDetails>
+
+<RequestSchema
+  {...require("./update-permission.RequestSchema.json")}
+></RequestSchema>
+
+<StatusCodes {...require("./update-permission.StatusCodes.json")}></StatusCodes>

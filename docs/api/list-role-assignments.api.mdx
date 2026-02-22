@@ -1,0 +1,51 @@
+---
+id: list-role-assignments
+title: "List role assignments"
+description: "List role assignments"
+sidebar_label: "List role assignments"
+hide_title: true
+hide_table_of_contents: true
+api: eJy1V21v2zYQ/isHfmoBWnaCrlj1acGSFi42pEgydEBtNIx0kplSpEpSbj1D/304SrLllzpO0n5KLB7vOd7dcy9LZkq0wkujxymLmZLOXxmFZ87JXBeovWOceZE7Fn9idAL9oylnpbCiQI+WJJZMiwJZzIzNxynjTGoWs1L4GePM4tdKWkxZ7G2FnLlkhoVg8ZL5RUmXnLdS54yzzNhCeBazqpIpqzlL0SVWlmQmi9mlzYWW/wWrYXzOar7C9aiF9p/lCvtrhXbBngH2ViqPFu4W0OjeAiytSavkFyG2yrcgK4f21+CR5i0wJQvpH4SS2mOOlpHqTFTKs/h0xFkhvsuiKlh8MhrtwH4QudRNDBuQHqrJModPgj2I06rtAf07uMKvFTo/GJ93cDMUaVC6TthMKPecjP1TSdR+4KqyVBJTsA0ojM8hMxYSYy2qYGMEF8nMYApSg0VXGu0QCvQiYvWUTGo+OTLidDSiP5tQf0nnwWRgiatig8aJ0R61pzuCDEkC4vDe0cXl7uvM3T0mFIXSUpXwsoFNhe9LCWsFRUd6LNzDt2V6lP9Mj+Ofj7yzJv8x0j3mHiPese4YWfL9sbKJReEx/Sz8QfFUeBx4WWCTXAofdYczXSkl7hQ2xbcmb0lPP9lmuWd0RPn2cCTLFbEelm0YvstcinRDyr1n3nih9h317F/zO7i+YdbRKSMLdF4U5bHOr3/sOmLeVcvPVvDV6NUuQ6/QmcomCNp4yEyl05/HTbTW2IfFEpPi7otD5J0T+f6zFL2Qag/F6+Nz5jHh2S6i/VoNmTXFqowaCzlqmmPwSVHdRhpfXw5+fz06gbWiftj/pqf2P1wEr9dNzPeU4z21uEA/MzRx5aHPhREpZsP5ybBf+dxwGSapekgqBpsqHNp5N3ZVVlHn8r508XCYYmGie+Gt/B5Js/O8cywMnH0Yw52gTJ2SqqSy0i+CrjsUFu1ZRRZ9mvaPrykLm0D2hVY+JvyuT9PvRojx9p+3nefff7zZMer9xxsQSYLOgTdfUMOLq+vT316/jODyzgupYS4FfLi8vgFykqj8bBjkohAJqTMTDGkj8j48nh65C9QcSQcCroW4hndmjlYLnSBc6FxqDD1Zpqi99AsORaW8HITmkiw4ELSxbYD4RAuddoPaQOEcFRCXrVER3MykC44uhBY5OtiILe+uOd7Olo5PNPUZx0PKkATaQjrXiBNSMEphyIFooif6TKnVoOAgM0qZb3C7BOrSPEwOMSxhzTu+Tmqoob6NoEnRTsVES52oKkW4DWPHusqTnlDHeTtIcQj1OSgJFHA0QU707RJCHaILVGnIjFBWOLQ1BOrGNLo60YwzSuQmPCfRKBq1BVEkoSC2s1oTOMYZFkJSut9jlllcoCulRhWdvHlz+kdOZ1FiipAWpXG+ELqn5Ed83MiRVUJ7/O6HpRIy9JZAsmXL1U9sfsI25xTSE3ebzw5hp5zNjPN0c7kk5v1jVV3T52a+Jeql0lGTXk+cW2atusTetYTvN/sLLrY2o7lQFcmFSfgpmL3F5CDoxnb0bNRuPTkIud6Onoi3s5cchOtEng+22nkOoK1k1nBT+mFlM9s9KoVeXLX7zUvY3qh/YEQ38etF34SVcSHz62nNuxXqcfb8lCXpoPu2tr2NmDUSZ0mCZd/BO8MYOXzVvN9d3LC6/h9mjPGj
+sidebar_class_name: "get api-method"
+info_path: docs/api/jatrix-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List role assignments"}
+></Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/organizations/{orgId}/role-assignments"}
+  context={"endpoint"}
+></MethodEndpoint>
+
+List role assignments
+
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./list-role-assignments.ParamsDetails.json")}
+></ParamsDetails>
+
+<RequestSchema
+  {...require("./list-role-assignments.RequestSchema.json")}
+></RequestSchema>
+
+<StatusCodes
+  {...require("./list-role-assignments.StatusCodes.json")}
+></StatusCodes>

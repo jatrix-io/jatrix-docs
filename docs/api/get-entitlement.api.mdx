@@ -1,0 +1,49 @@
+---
+id: get-entitlement
+title: "Get entitlement by ID"
+description: "Get entitlement by ID"
+sidebar_label: "Get entitlement by ID"
+hide_title: true
+hide_table_of_contents: true
+api: eJzlVt9v2zYQ/lcO99QCtJwEXbHqacGSBQ42pEgydEAcNIx4tplSpEJSbj1B//twlOLIcbq6Xd72ZJk83s/v7rsGXUVeRu3sRGGOc4rHNupoqCQbUWCU84D5FQ5OA14LrKSXJUXyfNuglSVhjs7PJwoFaos5VjIuUKCn+1p7UphHX5PAUCyolJg3GFcVPwrRaztHgTPnSxkxx7rWCluBikLhdcXeYY5nfi6t/js5C5MjbMXarn4xowOlf43O6b6mEEeTowf1C5KK/IaBmTThv4T1q9Fk4yjUVWU0KfCdUZgcwcx5KJz3ZFLQGRwXC0cKtAVPoXI2EJQUZYbtNbvUHQV24mBvj382TW2WtnA28lfeoGTbRTIyvgss22wH5G7vqOCHlWfQRN1ZUjLuIKXVTqlxgxp/3PFNJCtt3FW68k7Vxc7iIcpYh+dEydYld4Ysol4SCgx1qMgqUnjdCiw8yUjqo4z/akfJSKOoS2JjdaW++40iQ9/1RqCtjZG3hrrmaDmFDIsnAGkFMra+XdoesDtl9Cn4hz0GM+/KNfydhzlZnk3UVVmXFKIsq53D3LQ0uTgb/fx2bx8eFQ0j/4ND/UoqzvvGwrZliTd7b7Zb65yCq31BYF2EmauterkOI++d/7ZY4RRtJyeVMQQ5f/5OUZTahG3tKdT/NQBS1tuu5puqTigCPeIDbleQKKKkuHA9jXKWmItyHC/3x8O5FsZN4sl2PNARxo1WLU8R8ssHVq29Yc6JsQr5eKyodNmdjF5/ybTbiu+ISgeH7ydwKxmq16yqqL2Oq6TrlqQnf1izS1fXw+sLhmFXyaHQOslsH3uC4/+dEIr+47eH1J9+uNxy6vTDJciioBAguk9k4dX5xcFPb19ncHYbpbaw1BLen11cAmdJ1nExTnJZKoW2M5cc6UtymoLnILcNdVc6gIQLKS/gxC3JW2kLgmM715YSm2qVcr4SUNYm6lHijmIlgE0731dITK20CnqqGBlakgFuZu9MBpcLHVKiS2nlnAJsFFc8PAsCOmYKYmrrQD4I8M4QS5AvdQidOFsaAiGb2qk9NGZN8QFmzhj3GW4aYLIVifNzaOCx8cQjqqGF9iaD33WIjyqmVtvC1IrgJi0MlZxrmxxmPUaXOgpws1mgKCC6KE1SknogQB1oam8aSIOIH/CoYTfSXBHQDxFoO9f46dSiQAZyV579bC/b6yeiLNJE7LesrnDMp6XUDPc7ms08rShU2pLJ9t+9O/hlzndZ4coEi8qFWEo7UPK1htzAyBrQkb7EcWWktol0ucmavlmvcLmPm2tIQIH5w2I7LBSfa8XL8MKFyG+bhnvvT2/alo/va/LcfNcCl9LrjnKvGlQ68Pfj7vjEzTVt4Kvzfs18DU+3X/F8NP2htCvOvzQ1/0OBn2i13s95x/0hH37MKC9SvBH1u/P3ZeBFtuOvuN2592TNX7vPWeokDouCqji42yJzHqfr4X9yfIlt+w8afpkm
+sidebar_class_name: "get api-method"
+info_path: docs/api/jatrix-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get entitlement by ID"}
+></Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/organizations/{orgId}/entitlements/{id}"}
+  context={"endpoint"}
+></MethodEndpoint>
+
+Get entitlement by ID
+
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./get-entitlement.ParamsDetails.json")}
+></ParamsDetails>
+
+<RequestSchema
+  {...require("./get-entitlement.RequestSchema.json")}
+></RequestSchema>
+
+<StatusCodes {...require("./get-entitlement.StatusCodes.json")}></StatusCodes>

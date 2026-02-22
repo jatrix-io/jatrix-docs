@@ -1,0 +1,51 @@
+---
+id: create-entitlement
+title: "Create entitlement"
+description: "Create entitlement"
+sidebar_label: "Create entitlement"
+hide_title: true
+hide_table_of_contents: true
+api: eJztWFFv2zYQ/ivEPbUAbcdp4jZ+WtZkg4sNKZIMHRAHzUU62UwpUiUpt56h/z4cJduynbbuVmDD1rzEko7H43d3H+9uAbYgh0FZM0phCIkjDHRuggqacjIBJASceBjeQOuth1sJBTrMKZDjrwswmBMMwbrJKAUJysAQCgxTkODofakcpTAMriQJPplSjjBcQJgXvMgHp8wEJGTW5RhgCGWpUqgkpOQTpwo2EIZw4SZo1B/RXjE6g0qu9v29c0nvS/KhMzpbbj8lTMltGJCh9n/HgpdakQkdXxaFVpQKV28qRmcis04k1jnS0b6uOE+mllKhjHDkC2s8iZwCdqG6rU0iH3606ZzN2IYosSYw/MMFIG+VRJ29B89WLHbtt/cPlISNo95AIIMmvFXsj8LZtEyaBx8wlLUTHQdAUOSjstWCfZBpqdxHvNn0EVEyZc72YhLUjNi+0hdkUkrhtqokxLhj8Lejc2SKMkBVsdAS47jD4UGf/236rrVQ1IHOWPxlpDehSzHsIbUnVLYV5/vC+2/0nWwIJX2L4bP7pBioE1ROvFlZpF+9JiVNX7VGgim1xnsOLE65dpy1+a+SwEn7Zdc2Cb0Xotus0iYvkTmbr3jFOjEhwxRNtZdVTj5gXux9zM2dRlcXnReDg75YK2qf/Fc+6ieguGwSrMm3o4OD3RQbmRlqxZzHifnNkoucs+7LYolNaReX6EHvcfL4t5QCKu13tcdT/q99H1Ffevto19uX5G3pEhLGBpHZ0nxDPv3u8n/e5Se7Lr+Ot4xA7QjTuZiiF9S6VoMVzc3yPRL+K5GwWwPHO73td4hYTS23EIX1ESMu/YfQm/V77WrG9xaxQ6h61G4nJHhys2UrUTrN1XsIhR/2einltvuAwamPXWV3DnZGuRWnr0fiHvluumVVSelUmEdd94SO3GnJ1tzctj9fcfzVLmwLrdDl/aFpFfi5FgLZ/PhpifmrN9c7Rr16cy0wSch7Eew7MuLJ5dXh8eBpV1zcB1RGzBSK1xdX14IBwjJMe1GuG33AGXK57g/OP2JeaNoq0OFZhi+Os8FR5/h5/3nn6Hhw2Ll/liWdw+Rk8CwbDDDDwWbhv/eaZbm3rOoqbqgyGy1o4uNVdAgDv3v4+pPyAsUV4pX42c7IGTQJiXMzUYZir6TSGAJzKfJSB9WJZ0vmUjAc1jUBI8cGTbpklY6mGWnBzOKs7orrqfLR+TkanJAXG7Eml8u8FDVyXo5N6cl5KZzVxBLkcuV9Lc47teOyOzZjc6r1qoHzIrNa2w/ibiG44pexoxuKhVizgFynmKhEddcVvygf1irGRplElymJu9gOFjhRJhrMerTKVZDCZpmnIEWwAXVUEhPSi9LT2NwtRGRFXsC8x2ZEkpOiYTRR1abx0rEBCZxctXv63YPuQUPPmER6bnro2nFc1OeoOAUfKMsczckXypDu9k9ODn+Y8LduYvMYqpztOZqWkkfZYSNAVhkW6GPoFRqViWU/Z/2iIY4bmPVhsxFilhguxwu0NYyYMusMb2CxYBr4zemq4tfvS3LMA7cSZuhUXe7fLCBVnn+vBwJbBq6uLnhy2TTUT8X29EE+fo7mJZo5w4665CeQ8I7mq/lIxb1RM574Onu+yQDiE5bXFm5NUlYn4GFLLfGytqZzzUrWEjuX/HrFaZJQET4re9u6Q5gZmWib4Uger3Zw+IEHHPihxtMWdVTwFczvFqDRTMp41UOtk//+BK1bgzs=
+sidebar_class_name: "post api-method"
+info_path: docs/api/jatrix-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create entitlement"}
+></Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/organizations/{orgId}/entitlements"}
+  context={"endpoint"}
+></MethodEndpoint>
+
+Create entitlement
+
+<Heading id={"request"} as={"h2"} className={"openapi-tabs__heading"}>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./create-entitlement.ParamsDetails.json")}
+></ParamsDetails>
+
+<RequestSchema
+  {...require("./create-entitlement.RequestSchema.json")}
+></RequestSchema>
+
+<StatusCodes
+  {...require("./create-entitlement.StatusCodes.json")}
+></StatusCodes>
