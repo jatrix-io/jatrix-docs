@@ -18,5 +18,5 @@ Jatrix acts as the control layer for SaaS ecosystems. It provides:
 
 ## Next steps
 
-1. Read the [vision and principles](../spec/) to understand the design
+1. Read the [vision and principles](./spec) to understand the design
 2. Check the [API Reference](./api) to integrate
