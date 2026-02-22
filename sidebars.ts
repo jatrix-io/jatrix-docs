@@ -11,7 +11,7 @@ const apiSidebar = require("./docs/api/sidebar").default;
 const sidebars: SidebarsConfig = {
   docs: [
     { type: "doc", id: "intro" },
-    { type: "doc", id: "spec/intro", label: "Vision and Principles" },
+    { type: "doc", id: "spec", label: "Vision and Principles" },
     {
       type: "category",
       label: "Jatrix API",
