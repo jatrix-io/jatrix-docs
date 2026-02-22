@@ -1,0 +1,49 @@
+openapi: 3.0.3
+info:
+  title: Jatrix API
+  description: |
+    Jatrix is a SaaS Governance Engine for identity, multi-tenancy, authorization,
+    and product-level control. This API manages organizations, products, tenants,
+    users, roles, permissions, and entitlements.
+  version: 1.0.0
+  contact:
+    name: Jatrix
+servers:
+  - url: https://demo.jatrix.io
+    description: Demo API base
+paths:
+  /health:
+    get:
+      operationId: getHealth
+      tags:
+        - Health
+      summary: Health check
+      description: Returns API health status. Used for load balancer probes.
+      x-codeSamples:
+        - lang: cURL
+          label: cURL
+          source: |
+            curl -L 'https://demo.jatrix.io/health'
+      responses:
+        '200':
+          description: API is healthy
+  /ready:
+    get:
+      operationId: getReady
+      tags:
+        - Health
+      summary: Readiness check
+      description: Returns readiness status. Verifies database connectivity.
+      x-codeSamples:
+        - lang: cURL
+          label: cURL
+          source: |
+            curl -L 'https://demo.jatrix.io/ready'
+      responses:
+        '200':
+          description: API is ready to serve traffic
+        '503':
+          description: API is not ready (e.g. database unavailable)
+tags:
+  - name: Health
+    description: Health and readiness endpoints
