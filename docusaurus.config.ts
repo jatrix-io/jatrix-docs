@@ -11,7 +11,7 @@ const config: Config = {
   },
   title: "Jatrix Docs",
   tagline: "SaaS Governance Engine — Identity, Multi-tenancy, Authorization",
-  url: "https://demo.jatrix.io",
+  url: "https://jatrix.cloud",
   baseUrl: "/",
   onBrokenLinks: "throw",
   favicon: "img/logo.jpeg",
@@ -24,6 +24,7 @@ const config: Config = {
 
   organizationName: "jatrix",
   projectName: "jatrix-docs",
+  trailingSlash: false,
 
   presets: [
     [
