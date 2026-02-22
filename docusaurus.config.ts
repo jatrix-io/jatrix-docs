@@ -14,7 +14,7 @@ const config: Config = {
   url: "https://jatrix.cloud",
   baseUrl: "/",
   onBrokenLinks: "throw",
-  favicon: "img/logo.jpeg",
+  favicon: "img/logo.png",
 
   markdown: {
     hooks: {
@@ -53,7 +53,7 @@ const config: Config = {
       title: "Jatrix",
       logo: {
         alt: "Jatrix Logo",
-        src: "img/logo.jpeg",
+        src: "img/logo.png",
       },
       items: [
         {
