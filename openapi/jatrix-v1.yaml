@@ -15,7 +15,7 @@ info:
     email: jeffreyespinel.1992@gmail.com
 
 servers:
-  - url: https://demo.jatrix.io
+  - url: https://demo.jatrix.cloud
     description: Demo API base
 
 tags:
@@ -59,7 +59,7 @@ paths:
         - lang: cURL
           label: cURL
           source: |
-            curl -L 'https://demo.jatrix.io/health'
+            curl -L 'https://demo.jatrix.cloud/health'
       responses:
         "200":
           description: API is healthy
@@ -77,7 +77,7 @@ paths:
         - lang: cURL
           label: cURL
           source: |
-            curl -L 'https://demo.jatrix.io/ready'
+            curl -L 'https://demo.jatrix.cloud/ready'
       responses:
         "200":
           description: API is ready to serve traffic

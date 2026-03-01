@@ -1,6 +1,6 @@
-# Vision and Principles
+# Vision
 
-This section describes the design vision and principles behind Jatrix.
+This section describes the design vision behind Jatrix.
 
 ---
 
