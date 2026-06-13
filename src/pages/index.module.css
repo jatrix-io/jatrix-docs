@@ -983,3 +983,145 @@
   background: #0a1628;
   border-color: rgba(255, 255, 255, 0.06);
 }
+
+/* ─── Responsive ─────────────────────────────────────── */
+
+/* Tablet: 768–1023px */
+@media (max-width: 1023px) {
+  .hero {
+    grid-template-columns: 1fr 240px;
+    padding: 40px 32px;
+    gap: 32px;
+  }
+
+  .heroH1 { font-size: 38px; }
+
+  .featuresOuter { padding: 64px 32px; }
+
+  .featGrid { grid-template-columns: repeat(2, 1fr); }
+
+  .featCell:nth-child(2n) { border-right: none; }
+  .featCell:nth-child(1),
+  .featCell:nth-child(2) { border-bottom: 1px solid #f1f5f9; }
+
+  .codeSplit { padding: 64px 32px; }
+  .codeSplitInner { grid-template-columns: 1fr; gap: 40px; }
+
+  .howSection { padding: 64px 32px; }
+  .steps { grid-template-columns: 1fr; gap: 28px; }
+
+  .pricingOuter { padding: 64px 32px; }
+  .plans { grid-template-columns: 1fr; }
+
+  .ctaBanner { padding: 64px 32px; }
+
+  .footer { padding: 24px 32px; }
+}
+
+/* Mobile: < 768px */
+@media (max-width: 767px) {
+  /* Hero */
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 32px 20px 28px;
+    gap: 28px;
+  }
+
+  .heroContent { text-align: center; }
+  .heroEyebrow { justify-content: center; }
+
+  .heroH1 { font-size: 30px; }
+
+  .heroDesc {
+    font-size: 15px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .heroActions {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .heroNote { text-align: center; font-size: 12px; }
+
+  .photoWrap { width: 190px; height: 232px; }
+
+  /* Logos band */
+  .logosBand {
+    padding: 14px 20px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Features */
+  .featuresOuter { padding: 48px 20px; }
+
+  .featHeader h2 { font-size: 24px; }
+
+  .featGrid { grid-template-columns: 1fr; }
+
+  .featCell {
+    border-right: none;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .featCell:nth-child(1),
+  .featCell:nth-child(2) { border-bottom: 1px solid #f1f5f9; }
+
+  .featCell:last-child { border-bottom: none; }
+
+  /* Code split */
+  .codeSplit { padding: 48px 20px; }
+  .codeSplitInner { grid-template-columns: 1fr; gap: 28px; }
+  .codeContent h2 { font-size: 24px; }
+
+  /* How it works */
+  .howSection { padding: 48px 20px; }
+  .howInner h2 { font-size: 24px; }
+  .howInner > p { margin-bottom: 32px; }
+  .steps { grid-template-columns: 1fr; gap: 24px; }
+
+  /* Pricing */
+  .pricingOuter { padding: 48px 20px; }
+  .pricingHead h2 { font-size: 24px; }
+  .plans { grid-template-columns: 1fr; }
+
+  /* CTA Banner */
+  .ctaBanner { padding: 48px 20px; }
+  .ctaBanner h2 { font-size: 24px; }
+  .ctaBanner p { font-size: 15px; }
+
+  /* Footer */
+  .footer {
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px 20px;
+    text-align: center;
+  }
+
+  .footerLinks {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+}
+
+/* Dark mode + mobile: feat cell borders */
+@media (max-width: 1023px) {
+  :global([data-theme="dark"]) .featCell:nth-child(1),
+  :global([data-theme="dark"]) .featCell:nth-child(2) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+}
+
+@media (max-width: 767px) {
+  :global([data-theme="dark"]) .featCell {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  :global([data-theme="dark"]) .featCell:last-child {
+    border-bottom: none;
+  }
+}
