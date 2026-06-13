@@ -41,6 +41,8 @@ tags:
     description: User role assignments
   - name: Entitlements
     description: Tenant-product entitlements
+  - name: Biometric
+    description: Biometric enrollment and 1:1 verification (face v1, fingerprint/rfid/nfc/retina future)
 
 security:
   - bearerAuth: []
@@ -1014,6 +1016,165 @@ paths:
         "404":
           $ref: "#/components/responses/NotFound"
 
+  /v1/biometric/enroll:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    post:
+      operationId: enrollBiometric
+      tags: [Biometric]
+      summary: Enroll biometric
+      description: Registers a biometric template for the authenticated user. Consent must be captured client-side before calling this endpoint.
+      security:
+        - bearerAuth: []
+      x-codeSamples:
+        - lang: cURL
+          label: cURL
+          source: |
+            curl -X POST 'https://demo.jatrix.cloud/v1/biometric/enroll' \
+              -H 'Authorization: Bearer <token>' \
+              -H 'Content-Type: application/json' \
+              -d '{"type":"face","slot":"primary","image_base64":"<base64>","consent_at":"2026-06-13T20:00:00Z"}'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BiometricEnrollInput"
+      responses:
+        "201":
+          description: Biometric enrolled
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BiometricEnrollmentResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "409":
+          description: Slot already enrolled for this type (CONFLICT)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "422":
+          description: Unsupported biometric type or no face detected (UNSUPPORTED_TYPE / NO_FACE_DETECTED)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /v1/biometric/verify:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    post:
+      operationId: verifyBiometric
+      tags: [Biometric]
+      summary: Verify biometric (1:1)
+      description: Performs a 1:1 similarity check against an existing enrollment. Accepts Bearer JWT or Organization API Key for service-to-service calls.
+      security:
+        - bearerAuth: []
+        - apiKeyAuth: []
+      x-codeSamples:
+        - lang: cURL
+          label: cURL
+          source: |
+            curl -X POST 'https://demo.jatrix.cloud/v1/biometric/verify' \
+              -H 'Authorization: Bearer <token>' \
+              -H 'Content-Type: application/json' \
+              -d '{"user_id":"<uuid>","type":"face","slot":"primary","image_base64":"<base64>"}'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BiometricVerifyInput"
+      responses:
+        "200":
+          description: Verification result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BiometricVerifyResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: No enrollment found for user/type/slot (NOT_FOUND)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /v1/biometric:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: listBiometricEnrollments
+      tags: [Biometric]
+      summary: List biometric enrollments
+      description: Returns all active biometric enrollments for the authenticated user.
+      security:
+        - bearerAuth: []
+      x-codeSamples:
+        - lang: cURL
+          label: cURL
+          source: |
+            curl -L 'https://demo.jatrix.cloud/v1/biometric' \
+              -H 'Authorization: Bearer <token>'
+      responses:
+        "200":
+          description: List of biometric enrollments
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BiometricEnrollmentListResponse"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /v1/biometric/{id}:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    delete:
+      operationId: deleteBiometricEnrollment
+      tags: [Biometric]
+      summary: Delete biometric enrollment (soft delete)
+      description: Removes a biometric enrollment by ID. Only the enrollment owner may delete their own enrollments.
+      security:
+        - bearerAuth: []
+      x-codeSamples:
+        - lang: cURL
+          label: cURL
+          source: |
+            curl -X DELETE 'https://demo.jatrix.cloud/v1/biometric/<uuid>' \
+              -H 'Authorization: Bearer <token>'
+      parameters:
+        - $ref: "#/components/parameters/id"
+      responses:
+        "204":
+          description: Enrollment deleted
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
 components:
   securitySchemes:
     bearerAuth:
@@ -1021,6 +1182,11 @@ components:
       scheme: bearer
       bearerFormat: JWT
       description: JWT access token (RS256). Obtain via POST /v1/auth/token.
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Organization API Key for service-to-service calls. Looked up by SHA-256 hash.
 
   parameters:
     xRequestId:
@@ -1095,6 +1261,18 @@ components:
             $ref: "#/components/schemas/Error"
     NotFound:
       description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    Conflict:
+      description: Resource already exists
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    UnprocessableEntity:
+      description: Unprocessable entity
       content:
         application/json:
           schema:
@@ -1775,3 +1953,116 @@ components:
             timestamp:
               type: string
               format: date-time
+
+    BiometricEnrollment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        organization_id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+          format: uuid
+        type:
+          type: string
+          enum: [face, fingerprint, rfid, nfc, retina]
+        slot:
+          type: string
+          example: primary
+        provider:
+          type: string
+          example: aws_rekognition
+        model_version:
+          type: string
+          example: rekognition-v1
+        consent_at:
+          type: string
+          format: date-time
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    BiometricEnrollInput:
+      type: object
+      required: [type, image_base64, consent_at]
+      properties:
+        type:
+          type: string
+          enum: [face]
+          description: Biometric modality. Only "face" is supported in v1.
+        slot:
+          type: string
+          default: primary
+          description: Named slot for multiple enrollments of the same type.
+        image_base64:
+          type: string
+          description: Standard base64-encoded image.
+        consent_at:
+          type: string
+          format: date-time
+          description: RFC3339 timestamp when the user's consent was recorded client-side.
+
+    BiometricVerifyInput:
+      type: object
+      required: [user_id, type, image_base64]
+      properties:
+        user_id:
+          type: string
+          format: uuid
+          description: ID of the user whose enrollment to compare against.
+        type:
+          type: string
+          enum: [face]
+        slot:
+          type: string
+          default: primary
+        image_base64:
+          type: string
+          description: Standard base64-encoded probe image.
+
+    BiometricVerifyResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            verified:
+              type: boolean
+              description: True if similarity meets or exceeds the configured threshold.
+            similarity:
+              type: number
+              format: float
+              description: Similarity score between 0.0 and 1.0.
+            enrollment_id:
+              type: string
+              format: uuid
+              description: ID of the matched enrollment.
+        meta:
+          $ref: "#/components/schemas/Meta"
+
+    BiometricEnrollmentResponse:
+      type: object
+      properties:
+        data:
+          $ref: "#/components/schemas/BiometricEnrollment"
+        meta:
+          $ref: "#/components/schemas/Meta"
+
+    BiometricEnrollmentListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/BiometricEnrollment"
+        meta:
+          $ref: "#/components/schemas/Meta"
