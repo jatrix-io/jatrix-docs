@@ -1,0 +1,1 @@
+{"parameters":[{"name":"X-Request-ID","in":"header","required":false,"schema":{"type":"string","format":"uuid"},"description":"Client-supplied request ID for correlation. Echoed in response meta."}]}

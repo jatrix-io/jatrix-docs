@@ -386,6 +386,40 @@ const sidebar: SidebarsConfig = {
         },
       ],
     },
+    {
+      type: "category",
+      label: "Biometric",
+      link: {
+        type: "doc",
+        id: "api/biometric",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "api/enroll-biometric",
+          label: "Enroll biometric",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/verify-biometric",
+          label: "Verify biometric (1:1)",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/list-biometric-enrollments",
+          label: "List biometric enrollments",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/delete-biometric-enrollment",
+          label: "Delete biometric enrollment (soft delete)",
+          className: "api-method delete",
+        },
+      ],
+    },
   ],
 };
 
