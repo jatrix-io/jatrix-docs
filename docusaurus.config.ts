@@ -119,6 +119,24 @@ const config: Config = {
         } satisfies Plugin.PluginOptions,
       },
     ],
+    function nodeBuiltinsFallback() {
+      return {
+        name: "node-builtins-fallback",
+        // postman-code-generators uses Node built-ins (path, fs, os) that don't
+        // exist in browser bundles. Tell rspack/webpack to return empty stubs.
+        configureWebpack() {
+          return {
+            resolve: {
+              fallback: {
+                path: false,
+                fs: false,
+                os: false,
+              },
+            },
+          };
+        },
+      };
+    },
   ],
 
   themes: ["docusaurus-theme-openapi-docs"],
