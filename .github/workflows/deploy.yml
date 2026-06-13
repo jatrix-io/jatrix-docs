@@ -14,6 +14,8 @@ jobs:
       - run: yarn install --immutable
       - run: yarn gen-api-docs jatrix
       - run: yarn build
+        env:
+          DOCUSAURUS_FASTER: "false"
       - uses: actions/upload-pages-artifact@v3
         with:
           path: build
