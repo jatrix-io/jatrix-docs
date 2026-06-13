@@ -8,6 +8,22 @@
   max-height: 40px;
 }
 
+/* Navbar CTA button */
+.navbar-cta-btn {
+  background: #1e3a5f !important;
+  color: #fff !important;
+  padding: 7px 16px !important;
+  border-radius: 7px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  transition: background 0.15s !important;
+}
+
+.navbar-cta-btn:hover {
+  background: #172d4a !important;
+  color: #fff !important;
+}
+
 /* Navy palette */
 :root {
   --ifm-color-primary: #1e3a5f;

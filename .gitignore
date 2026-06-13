@@ -28,3 +28,9 @@ Thumbs.db
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Yarn cache (PnP offline mirror)
+.yarn/cache/
+
+# Superpowers brainstorm sessions
+.superpowers/

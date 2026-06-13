@@ -67,6 +67,17 @@ const config: Config = {
           position: "left",
           to: "/docs/api",
         },
+        {
+          label: "Pricing",
+          position: "left",
+          to: "/#pricing",
+        },
+        {
+          label: "Get started free",
+          position: "right",
+          to: "/docs/intro",
+          className: "navbar-cta-btn",
+        },
       ],
     },
     footer: {
