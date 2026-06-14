@@ -1,0 +1,69 @@
+---
+id: list-user-documents
+title: "List user documents"
+description: "List user documents"
+sidebar_label: "List user documents"
+hide_title: true
+hide_table_of_contents: true
+api: eJzlV21v2zYQ/isHfmoBSk6Ctlj9acGcde7apYhTdEFsJLR4splSpEpSXjxD/304Snb81tbNsk/7ZJk8Hp97e+64YLZEJ4Kypi9Zl2nlw0ePrmezqkATPOMsiIln3WtG6/DB2Vxp9GzEWSmcKDCgo+0FM6JA1mXWTfqScaYM67JShCnjzOGXSjmUrBtchZz5bIqFYN0FC/OSDvnglJkwznLrChFYl1WVkqzmTKLPnCoJIeuyczcRRv0dAUO/x2q+ujegESb8d1dfRv1bl1Ye3dNduab4z+QCv1ToQ9LvLdVPUUh0GxfkQvt/Y9QvWqEJia/KUiuU4JpLod+D3DrIrHOoo7dTOMumFiUoAw59aY1HKDCIlNUjgtQseQJxcnREP5tXvVM+gM1BrqVWZk1AE0hYEIIsXtW583RisWuWHd9hFhhnpaO8Daq5T4qwLiWcE3NyWsDCf/+0kgc5jkJ9c6CsXUvTQ880+XuwdBTYFURTFVSsGcpKC8aZcJosFt6X1pHxWJLnbZiiY6OaMyrnm8rpfdq2kqX3B3y8eEdBDFNcBRJIQ0qgfBCh8t+CVaKRzcoMncoVUu3gfRmzmdBUpbZCorwZzw/yg/K+Qnkjwj5pU2ktxhqXhbhpTn9wDlIEhGdXV1dXyfv3Sa/3nHQ2ePzTKs0civBVpCu76GwSVIEx5Ur5w2ckavyhM9sW1ZRdKtBftt4KiJ4YFfz3K6plkYNyeduB68QHubPFipOsgwka6lbYlIAq0AdRlAcbuhOq5KdXR8fwoGjd9vdk6tecQWR20VIeq2sSe3H0Ypf0LtDbymUIxgbIbWXk07EeOmfd98UyK/cwRYyl92Kyf09iEErvIc/6/54FZ9HrdRPzPR2O2sRGjyswTC3NVhOMPqIZocs6s+POepfwnUUcnOpO0wd8Z7EcaOoO6fSdRTNs1J117R7dbDmARRJn0xBK3+10JBY2vRPBqfs007badXIPCwunH/owFpTFI9KWVU6FeVQ3RuHQnVaE93q0vj2gDG2CvC608j9BYO1UQv8bIcbbj1+XUXn76XIH1NtPlyCyDL2HYD+jgWcXg5OXr56ncD4OQhmYKQEfzgeXQC4UVZh2olxsQKJUv+N8C02zuDNEtYPWfSJKlXyOAt+YNclNv+M8TkXkc5VhEmzSfkImtPYpvLP2M0qoShjPYfDbaXLy8hVMhZ+mMYeUyW0E1ubS2xgd0r3rhmZLeRAwEGIAb+wMnREmQzgzE2UwQlESTVBhzqGodFBJzJlszoEcY12Lng+NMBJKZ2WVhUTjDDUQCzmrU7icKh/tK4QRE/SwkZd8ecxzaFOTD03MSA7OaiQJdIXyvhGnmyIojTFJ06EZmlOtV1Ojh9xqbf+C2wW1SsHjGNmFBTwwBn8oR6ihvk0hFtdKxdAok+lKItzGGbQUE2UiYNKjVaECB5vnHgOHYIPQUUksXk81OjS3C4gMSgeIIwlGJEQOLftB3UCjo0PTzCy+Cc9xepQetVQuskjlbT41gaOpphCK6vEO89zhHH2pDOr0+PXrk58ntJdmtohpUVofCmHWlOxnko0MWaV3wPvQKbVQJo4MzSDXsMw1mx2zzWmU9HSXT7Q2nrS09nqKsaW11ePmAcSIs6n1gVQvFkQbH52ua1r+UqEj3hhxNhNONfPE9YJJ5en74a2yZcWqGbJnF+2z5jlsP/P4fmOXBW6oeGdCV/SPcUbVvHyI0pvqURge3nuPun3l0EcDeNy9bdBqGqZbrvuxMDzJk/Ar0BuIW2/blQnkqUbiNMuwDGt7O3MStaNVZ31zdsnq+h9M9cI+
+sidebar_class_name: "get api-method"
+info_path: docs/api/jatrix-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List user documents"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/organizations/{orgId}/tenants/{tenantId}/users/{userId}/documents"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+List user documents
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./list-user-documents.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./list-user-documents.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./list-user-documents.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

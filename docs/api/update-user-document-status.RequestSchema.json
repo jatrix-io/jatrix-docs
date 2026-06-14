@@ -1,0 +1,1 @@
+{"title":"Body","body":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["status"],"properties":{"status":{"type":"string","enum":["pending","verified","expired"]}},"title":"UpdateDocumentStatusInput"}}}}}

@@ -1,0 +1,1 @@
+{"parameters":[{"name":"subdomain","in":"query","required":true,"schema":{"type":"string"},"description":"Tenant subdomain (e.g. `acme` for `acme.myapp.com`)"},{"name":"X-Request-ID","in":"header","required":false,"schema":{"type":"string","format":"uuid"},"description":"Client-supplied request ID for correlation. Echoed in response meta."}]}

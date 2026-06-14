@@ -208,6 +208,18 @@ const sidebar: SidebarsConfig = {
           label: "Delete user (soft delete)",
           className: "api-method delete",
         },
+        {
+          type: "doc",
+          id: "api/activate-user",
+          label: "Activate user",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/reject-user",
+          label: "Reject user",
+          className: "api-method post",
+        },
       ],
     },
     {
@@ -417,6 +429,160 @@ const sidebar: SidebarsConfig = {
           id: "api/delete-biometric-enrollment",
           label: "Delete biometric enrollment (soft delete)",
           className: "api-method delete",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Groups",
+      link: {
+        type: "doc",
+        id: "api/groups",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "api/list-groups",
+          label: "List groups",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/create-group",
+          label: "Create group",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/get-group",
+          label: "Get group by ID",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/update-group",
+          label: "Update group",
+          className: "api-method patch",
+        },
+        {
+          type: "doc",
+          id: "api/delete-group",
+          label: "Delete group (soft delete)",
+          className: "api-method delete",
+        },
+        {
+          type: "doc",
+          id: "api/list-group-members",
+          label: "List group members",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/add-group-member",
+          label: "Add user to group",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/remove-group-member",
+          label: "Remove user from group",
+          className: "api-method delete",
+        },
+        {
+          type: "doc",
+          id: "api/list-user-groups",
+          label: "List groups for a user",
+          className: "api-method get",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "User Profiles",
+      link: {
+        type: "doc",
+        id: "api/user-profiles",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "api/get-user-profile",
+          label: "Get user profile",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/upsert-user-profile",
+          label: "Upsert user profile",
+          className: "api-method put",
+        },
+        {
+          type: "doc",
+          id: "api/list-user-documents",
+          label: "List user documents",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/create-user-document",
+          label: "Create user document (URL already known)",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/update-user-document-status",
+          label: "Update document status",
+          className: "api-method patch",
+        },
+        {
+          type: "doc",
+          id: "api/delete-user-document",
+          label: "Delete user document (soft delete)",
+          className: "api-method delete",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "File Storage",
+      link: {
+        type: "doc",
+        id: "api/file-storage",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "api/upload-tenant-logo",
+          label: "Upload tenant logo",
+          className: "api-method patch",
+        },
+        {
+          type: "doc",
+          id: "api/upload-user-avatar",
+          label: "Upload user avatar",
+          className: "api-method patch",
+        },
+        {
+          type: "doc",
+          id: "api/upload-user-document",
+          label: "Upload user document",
+          className: "api-method post",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Brand",
+      link: {
+        type: "doc",
+        id: "api/brand",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "api/get-brand-config",
+          label: "Get brand config by subdomain",
+          className: "api-method get",
         },
       ],
     },

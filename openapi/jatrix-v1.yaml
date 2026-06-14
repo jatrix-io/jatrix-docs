@@ -43,6 +43,14 @@ tags:
     description: Tenant-product entitlements
   - name: Biometric
     description: Biometric enrollment and 1:1 verification (face v1, fingerprint/rfid/nfc/retina future)
+  - name: Groups
+    description: User groups within a tenant (organizational containers; no effect on authorization in v1)
+  - name: User Profiles
+    description: Extended user identity data and document management
+  - name: File Storage
+    description: Upload files (logos, avatars, documents) to S3 via base64. Returns CDN URL at storage.jatrix.com
+  - name: Brand
+    description: Public branding config resolved by tenant subdomain
 
 security:
   - bearerAuth: []
@@ -447,6 +455,46 @@ paths:
         "404":
           $ref: "#/components/responses/NotFound"
 
+  /v1/organizations/{orgId}/tenants/{id}/logo:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    patch:
+      operationId: uploadTenantLogo
+      tags: [File Storage]
+      summary: Upload tenant logo
+      description: |
+        Uploads a logo image for the tenant. Accepts standard base64-encoded file.
+        Returns the CDN URL (`storage.jatrix.com`). Requires `S3_BUCKET_NAME` env var to be set; returns 503 if not configured.
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FileUploadInput"
+            example:
+              file_base64: "/9j/4AAQSkZJRgAB..."
+              content_type: "image/png"
+      responses:
+        "200":
+          description: Logo uploaded — CDN URL returned
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FileUploadResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "503":
+          description: Storage not configured (S3_BUCKET_NAME missing)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
   /v1/organizations/{orgId}/tenants/{tenantId}/users:
     parameters:
       - $ref: "#/components/parameters/xRequestId"
@@ -548,6 +596,562 @@ paths:
       responses:
         "204":
           description: User deleted
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /v1/organizations/{orgId}/tenants/{tenantId}/users/{id}/activate:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    post:
+      operationId: activateUser
+      tags: [Users]
+      summary: Activate user
+      description: Transitions a user from `pending` to `active`. Only pending users can be activated.
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/id"
+      responses:
+        "200":
+          description: User activated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          description: User is not in pending status (INVALID_STATE)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /v1/organizations/{orgId}/tenants/{tenantId}/users/{id}/reject:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    post:
+      operationId: rejectUser
+      tags: [Users]
+      summary: Reject user
+      description: Transitions a user from `pending` to `rejected`. Only pending users can be rejected.
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/id"
+      responses:
+        "200":
+          description: User rejected
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          description: User is not in pending status (INVALID_STATE)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /v1/organizations/{orgId}/tenants/{tenantId}/users/{id}/avatar:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    patch:
+      operationId: uploadUserAvatar
+      tags: [File Storage]
+      summary: Upload user avatar
+      description: |
+        Uploads an avatar image for a user. Accepts standard base64-encoded file.
+        Returns the CDN URL. Requires `S3_BUCKET_NAME` to be set; returns 503 if not configured.
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FileUploadInput"
+            example:
+              file_base64: "/9j/4AAQSkZJRgAB..."
+              content_type: "image/jpeg"
+      responses:
+        "200":
+          description: Avatar uploaded — CDN URL returned
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FileUploadResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "503":
+          description: Storage not configured
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /v1/organizations/{orgId}/tenants/{tenantId}/users/{userId}/profile:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: getUserProfile
+      tags: [User Profiles]
+      summary: Get user profile
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/tenantId"
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: User profile (null if not yet created)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfileResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    put:
+      operationId: upsertUserProfile
+      tags: [User Profiles]
+      summary: Upsert user profile
+      description: Creates or fully replaces the extended profile for a user.
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/tenantId"
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpsertUserProfileInput"
+      responses:
+        "200":
+          description: Profile upserted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfileResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /v1/organizations/{orgId}/tenants/{tenantId}/users/{userId}/documents:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: listUserDocuments
+      tags: [User Profiles]
+      summary: List user documents
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/tenantId"
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: List of documents
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserDocumentListResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    post:
+      operationId: createUserDocument
+      tags: [User Profiles]
+      summary: Create user document (URL already known)
+      description: Records a document with a pre-existing `file_url`. Use `/documents/upload` to upload a new file.
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/tenantId"
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateUserDocumentInput"
+      responses:
+        "201":
+          description: Document created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserDocumentResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /v1/organizations/{orgId}/tenants/{tenantId}/users/{userId}/documents/upload:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    post:
+      operationId: uploadUserDocument
+      tags: [File Storage]
+      summary: Upload user document
+      description: |
+        Uploads a document file (image or PDF) for a user. Accepts standard base64-encoded file.
+        Creates the document record and returns the CDN URL. Requires `S3_BUCKET_NAME`; returns 503 if not configured.
+
+        **Allowed content types:** `image/jpeg`, `image/png`, `image/webp`, `application/pdf`
+        **Max size:** 5 MB
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/tenantId"
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UploadDocumentInput"
+            example:
+              file_base64: "JVBERi0xLjQ..."
+              content_type: "application/pdf"
+              document_type: "cedula"
+              issued_at: "2020-01-01"
+              expires_at: "2030-01-01"
+      responses:
+        "201":
+          description: Document uploaded and record created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UploadDocumentResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "503":
+          description: Storage not configured
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /v1/organizations/{orgId}/tenants/{tenantId}/users/{userId}/documents/{docId}:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    patch:
+      operationId: updateUserDocumentStatus
+      tags: [User Profiles]
+      summary: Update document status
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/tenantId"
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: docId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateDocumentStatusInput"
+      responses:
+        "200":
+          description: Document status updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserDocumentResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    delete:
+      operationId: deleteUserDocument
+      tags: [User Profiles]
+      summary: Delete user document (soft delete)
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/tenantId"
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: docId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: Document deleted
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /v1/organizations/{orgId}/tenants/{tenantId}/groups:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: listGroups
+      tags: [Groups]
+      summary: List groups
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/offset"
+      responses:
+        "200":
+          description: List of groups
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GroupListResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    post:
+      operationId: createGroup
+      tags: [Groups]
+      summary: Create group
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/tenantId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateGroupInput"
+      responses:
+        "201":
+          description: Group created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GroupResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /v1/organizations/{orgId}/tenants/{tenantId}/groups/{id}:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: getGroup
+      tags: [Groups]
+      summary: Get group by ID
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/id"
+      responses:
+        "200":
+          description: Group
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GroupResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    patch:
+      operationId: updateGroup
+      tags: [Groups]
+      summary: Update group
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/id"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateGroupInput"
+      responses:
+        "200":
+          description: Group updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GroupResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    delete:
+      operationId: deleteGroup
+      tags: [Groups]
+      summary: Delete group (soft delete)
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/id"
+      responses:
+        "204":
+          description: Group deleted
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /v1/organizations/{orgId}/tenants/{tenantId}/groups/{id}/members:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: listGroupMembers
+      tags: [Groups]
+      summary: List group members
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/id"
+      responses:
+        "200":
+          description: List of memberships
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GroupMembershipListResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    post:
+      operationId: addGroupMember
+      tags: [Groups]
+      summary: Add user to group
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddGroupMemberInput"
+      responses:
+        "201":
+          description: Member added
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GroupMembershipResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+
+  /v1/organizations/{orgId}/tenants/{tenantId}/groups/{id}/members/{userId}:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    delete:
+      operationId: removeGroupMember
+      tags: [Groups]
+      summary: Remove user from group
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/tenantId"
+        - $ref: "#/components/parameters/id"
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: Member removed
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /v1/organizations/{orgId}/tenants/{tenantId}/users/{userId}/groups:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: listUserGroups
+      tags: [Groups]
+      summary: List groups for a user
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/tenantId"
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: List of groups the user belongs to
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GroupListResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /v1/brand:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: getBrandConfig
+      tags: [Brand]
+      summary: Get brand config by subdomain
+      description: Public endpoint — no auth required. Resolves tenant branding from the `subdomain` query param.
+      security: []
+      parameters:
+        - name: subdomain
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Tenant subdomain (e.g. `acme` for `acme.myapp.com`)
+      responses:
+        "200":
+          description: Brand config
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BrandResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
         "404":
           $ref: "#/components/responses/NotFound"
 
@@ -1503,9 +2107,16 @@ components:
           type: string
         slug:
           type: string
+        subdomain:
+          type: string
+          nullable: true
         status:
           type: string
           enum: [active, suspended, inactive]
+        logo_url:
+          type: string
+          nullable: true
+          description: CDN URL of the tenant logo (storage.jatrix.com). Set via PATCH /{id}/logo.
         created_at:
           type: string
           format: date-time
@@ -1587,9 +2198,17 @@ components:
           type: string
           format: email
           nullable: true
+        avatar_url:
+          type: string
+          nullable: true
+          description: CDN URL of the user avatar (storage.jatrix.com). Set via PATCH /{id}/avatar.
+        custom_attributes:
+          type: object
+          nullable: true
+          description: Arbitrary JSON attributes for the user.
         status:
           type: string
-          enum: [active, inactive, suspended]
+          enum: [active, inactive, suspended, pending, rejected]
         last_login_at:
           type: string
           format: date-time
@@ -1622,7 +2241,7 @@ components:
           type: string
         status:
           type: string
-          enum: [active, inactive, suspended]
+          enum: [active, inactive, suspended, pending, rejected]
           default: active
         custom_attributes:
           type: object
@@ -1639,9 +2258,339 @@ components:
           format: password
         status:
           type: string
-          enum: [active, inactive, suspended]
+          enum: [active, inactive, suspended, pending, rejected]
         custom_attributes:
           type: object
+
+    FileUploadInput:
+      type: object
+      required: [file_base64, content_type]
+      properties:
+        file_base64:
+          type: string
+          description: Standard base64-encoded file content (not URL-safe). Max 2 MB for logo/avatar, 5 MB for documents.
+        content_type:
+          type: string
+          description: MIME type of the file.
+          enum: [image/jpeg, image/png, image/webp, application/pdf]
+    FileUploadResponse:
+      type: object
+      properties:
+        url:
+          type: string
+          description: Permanent CDN URL at storage.jatrix.com.
+          example: "https://storage.jatrix.com/{tenantId}/preferences/logo.png"
+
+    UserProfile:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+          format: uuid
+        organization_id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        phone:
+          type: string
+          nullable: true
+        national_id:
+          type: string
+          nullable: true
+        emergency_contact_name:
+          type: string
+          nullable: true
+        emergency_contact_phone:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    UpsertUserProfileInput:
+      type: object
+      properties:
+        phone:
+          type: string
+        national_id:
+          type: string
+        emergency_contact_name:
+          type: string
+        emergency_contact_phone:
+          type: string
+    UserProfileResponse:
+      type: object
+      properties:
+        data:
+          $ref: "#/components/schemas/UserProfile"
+          nullable: true
+        meta:
+          $ref: "#/components/schemas/Meta"
+
+    UserDocument:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+          format: uuid
+        organization_id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        type:
+          type: string
+          enum: [cedula, arl, passport, eps, other]
+        file_url:
+          type: string
+          description: CDN URL of the document file.
+        status:
+          type: string
+          enum: [pending, verified, expired]
+        uploaded_by:
+          type: string
+          format: uuid
+        issued_at:
+          type: string
+          nullable: true
+          description: ISO date (YYYY-MM-DD)
+        expires_at:
+          type: string
+          nullable: true
+          description: ISO date (YYYY-MM-DD)
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        deleted_at:
+          type: string
+          format: date-time
+          nullable: true
+    CreateUserDocumentInput:
+      type: object
+      required: [type, file_url]
+      properties:
+        type:
+          type: string
+          enum: [cedula, arl, passport, eps, other]
+        file_url:
+          type: string
+          description: Pre-existing URL for the document file.
+        issued_at:
+          type: string
+          description: ISO date (YYYY-MM-DD)
+        expires_at:
+          type: string
+          description: ISO date (YYYY-MM-DD)
+    UpdateDocumentStatusInput:
+      type: object
+      required: [status]
+      properties:
+        status:
+          type: string
+          enum: [pending, verified, expired]
+    UploadDocumentInput:
+      type: object
+      required: [file_base64, content_type, document_type]
+      properties:
+        file_base64:
+          type: string
+          description: Standard base64-encoded file. Max 5 MB.
+        content_type:
+          type: string
+          enum: [image/jpeg, image/png, image/webp, application/pdf]
+        document_type:
+          type: string
+          enum: [cedula, arl, passport, eps, other]
+        issued_at:
+          type: string
+          description: ISO date (YYYY-MM-DD). Optional.
+        expires_at:
+          type: string
+          description: ISO date (YYYY-MM-DD). Optional.
+    UploadDocumentResponse:
+      type: object
+      properties:
+        url:
+          type: string
+          description: CDN URL of the uploaded file.
+        document:
+          $ref: "#/components/schemas/UserDocument"
+    UserDocumentResponse:
+      type: object
+      properties:
+        data:
+          $ref: "#/components/schemas/UserDocument"
+        meta:
+          $ref: "#/components/schemas/Meta"
+    UserDocumentListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/UserDocument"
+        meta:
+          $ref: "#/components/schemas/Meta"
+
+    Group:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        organization_id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        deleted_at:
+          type: string
+          format: date-time
+          nullable: true
+    CreateGroupInput:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+    UpdateGroupInput:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+    GroupResponse:
+      type: object
+      properties:
+        data:
+          $ref: "#/components/schemas/Group"
+        meta:
+          $ref: "#/components/schemas/Meta"
+    GroupListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Group"
+        meta:
+          type: object
+          properties:
+            pagination:
+              $ref: "#/components/schemas/Pagination"
+            request_id:
+              type: string
+              format: uuid
+            timestamp:
+              type: string
+              format: date-time
+
+    GroupMembership:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        group_id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+          format: uuid
+        organization_id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        added_by:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+    AddGroupMemberInput:
+      type: object
+      required: [user_id]
+      properties:
+        user_id:
+          type: string
+          format: uuid
+    GroupMembershipResponse:
+      type: object
+      properties:
+        data:
+          $ref: "#/components/schemas/GroupMembership"
+        meta:
+          $ref: "#/components/schemas/Meta"
+    GroupMembershipListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/GroupMembership"
+        meta:
+          $ref: "#/components/schemas/Meta"
+
+    BrandConfig:
+      type: object
+      properties:
+        org_id:
+          type: string
+          format: uuid
+        org_name:
+          type: string
+        org_logo_url:
+          type: string
+          nullable: true
+        tenant_id:
+          type: string
+          format: uuid
+          nullable: true
+        tenant_name:
+          type: string
+          nullable: true
+        tenant_logo_url:
+          type: string
+          nullable: true
+          description: CDN URL of the tenant logo.
+    BrandResponse:
+      type: object
+      properties:
+        data:
+          $ref: "#/components/schemas/BrandConfig"
+        meta:
+          $ref: "#/components/schemas/Meta"
     UserResponse:
       type: object
       properties:

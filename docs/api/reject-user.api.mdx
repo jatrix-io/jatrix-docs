@@ -1,0 +1,69 @@
+---
+id: reject-user
+title: "Reject user"
+description: "Transitions a user from `pending` to `rejected`. Only pending users can be rejected."
+sidebar_label: "Reject user"
+hide_title: true
+hide_table_of_contents: true
+api: eJztWN9vGzcM/lcIPSXA+ZwEbbH6aUaTrU6zpojddUASJPIdbSvVSVeJ58Uz7n8fKJ1/xE7SNGtftj3Zd0eRFPnxE6m5sCU6ScqaXi46wuENZvTRoxOJIDn2onMu+NGLy0Tk6DOnSpYWHTFw0njFDx4kVB4djJwt4LpEkyszvgaycB01Yn6dwqnRM2g+BnkPmTQwRFgIpSIRpXSyQGKTnfO5MLJA0RHWjXu5SIRiy6WkiUiEwy+VcpiLDrkKE+GzCRZSdOaCZiUv8uSUGYtEjKwrJImOqCqVi3pzJ6duLI36K4QBeoeiTpZ2CY009ONMD4L+DaPqu5lbU/pH6wy/VOip1TtcqJ+gzEOqVwZGUvt/sqE3WqGhlq/KUivMwUWj0DuEkXWQWedQh0incJRNLOagDDj0pTUeoUCSqagv2aX4yrMTB3t7/HPXFONyCR2RiMwaQkMsKNl6Fsy0bzxLz7e3ZIe8lCHnuApIRVu5pCdIqfxJwbFr0Lp64pqIuadK4y2hM1I/IG8qreVQY4ROnQguvAiJTWHOpfKllrOr+wXu0YaFVPpRP6PEPUvlVJJ0V5W7d/1d8S2UHb6Hj2cnYEdAE4zkE/XBjifr5BjTG0lO3aaZLXZT6CPBVEn40B28eQvtucrrdlyQ8r6zypMtriSRU8OKYoo3AfC4S103VOSkm8Fx//Q9rFQF3C+8DNY8Sar8fbtGUxVMuTIjNcVQpsu/vvJMngHqDYuGym3wf1knQktPV9qOlbmS9GhWcknYIlXgfZnJHErC/Ok6GFZl/s1rctT4TWu2fOVqUcSPgQ26WWYrQ6ybieTrVdyw05NqbTPh64QaT74F11kHYzR8rmIsaFWgJ1mUT97mXUu9/mnrp1d7+7BStL7z33irm6E4a+hT1DV/erH3YptAz9DbymUIxhKMbGW+I4uic9Z9XSyz+f1MVKD3cvwASyFJpe+p0bDV/3Lmj0LUFyl//cCZqXzIuDLLbiwyEuz03v/ePekdXvUH3cHR7v9o+LegIQZiYrnHL60PAeDWsiPa0/32epPi2/PQa9ft2Ib49nzRA9ft0LTHwzOeO3wsoZsumvVwlosJUek77XaOhV2ewtpW26E7xMJC90MPhpKZ6pK1ZZVTNAvqhigdum7Fjp5frn/uM+5i6taFllFlF0TTxfJzFBJJ8+eXRayPPw22nDr+NACZZeg9kP2MBnbO+gcvX+2mcDokqUzsI077A+DYyYom7SAXjnZZqnc42/AmvtxqupvG/LYlS9X6HAQemUs4TO9wFroJjrnKsEW21fyFTGrtUzix9jPmUJUwnEH/bbd18PIVTKSfpAEZyoxscKxByHHIDuveDkP8pHi460vZh1/tlDtHkyEcmbEyGFxRORpSNEugqDSpVgBLNkuAA2Nd431yYaTJoXQ2rzJqaZyiBuYWZ3UKg4nyYX+FNHKMHu4AMlks8wk0mEwuTIBiAs5qZAl0hfI+irOl4JTGAg359MJcmK7WyymDWzKt7Z9wPQfu9pMwdnRgDiseSFZFBjXU1ymcKE8rFRdGmUxXOcJ1mFlKOVYmOMx6tCoUJWBHI4+UAFmSOigJJem5Fbww13MIvMgLmPnYjUBzCTScBnV0jZdeGJEIrrSYnv10L91rCFpmgaAbPMXEiWVvLm5wNHI4Q18qgzrdf/364Ocxf+PeOMCCKaGQZk3JWSjv0LJuImO+OhR+1B1AUzeEt9QutVQmdJhxUIi8dS6m++LueOVFIjqLe4IGKPxqbYQPBvldoPGGwi4TMWFK7JyL+ZyJ6KPTdc2vv1TomIkuEzGVTsW+83zOUxL/X03LD8Zn56wZrHdh85LhgV0uKMMwHUylrvhJJIL5YXENwlP9s3xY3TY8y/oyks924Hl2edDl8aZhzm9LwXe5kHjA7ejexs3K0n2OUpToZhmWtPZtq5fiw215QvPhIur6bzmZv64=
+sidebar_class_name: "post api-method"
+info_path: docs/api/jatrix-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Reject user"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/v1/organizations/{orgId}/tenants/{tenantId}/users/{id}/reject"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Transitions a user from `pending` to `rejected`. Only pending users can be rejected.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./reject-user.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./reject-user.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./reject-user.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

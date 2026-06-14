@@ -1,0 +1,1 @@
+{"title":"Body","body":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"phone":{"type":"string"},"national_id":{"type":"string"},"emergency_contact_name":{"type":"string"},"emergency_contact_phone":{"type":"string"}},"title":"UpsertUserProfileInput"}}}}}
