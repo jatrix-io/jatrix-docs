@@ -14,6 +14,17 @@ const sidebars: SidebarsConfig = {
     { type: "doc", id: "spec", label: "Vision" },
     {
       type: "category",
+      label: "Authorization",
+      items: [
+        {
+          type: "doc",
+          id: "authorization/direct-permission-grants",
+          label: "Direct Permission Grants",
+        },
+      ],
+    },
+    {
+      type: "category",
       label: "Jatrix API",
       link: {
         type: "generated-index",
