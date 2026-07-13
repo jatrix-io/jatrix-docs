@@ -39,6 +39,8 @@ tags:
     description: Role-permission assignments
   - name: Role Assignments
     description: User role assignments
+  - name: User Permission Grants
+    description: Direct per-user ALLOW/DENY permission grants, independent of role assignments (ADR-0011)
   - name: Entitlements
     description: Tenant-product entitlements
   - name: Biometric
@@ -1503,6 +1505,102 @@ paths:
         "404":
           $ref: "#/components/responses/NotFound"
 
+  /v1/organizations/{orgId}/user-permission-grants:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: listUserPermissionGrants
+      tags: [User Permission Grants]
+      summary: List user permission grants
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - name: tenant_id
+          in: query
+          schema:
+            type: string
+            format: uuid
+          description: Filter by tenant ID
+        - name: product_id
+          in: query
+          schema:
+            type: string
+            format: uuid
+          description: Filter by product ID
+        - name: user_id
+          in: query
+          schema:
+            type: string
+            format: uuid
+          description: Filter by user ID
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/offset"
+      responses:
+        "200":
+          description: List of user permission grants
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserPermissionGrantListResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    post:
+      operationId: createUserPermissionGrant
+      tags: [User Permission Grants]
+      summary: Grant or deny a single permission to a user
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateUserPermissionGrantInput"
+      responses:
+        "201":
+          description: User permission grant created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserPermissionGrantResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "409":
+          $ref: "#/components/responses/Conflict"
+
+  /v1/organizations/{orgId}/user-permission-grants/{id}:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: getUserPermissionGrant
+      tags: [User Permission Grants]
+      summary: Get a user permission grant by ID
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/id"
+      responses:
+        "200":
+          description: User permission grant
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserPermissionGrantResponse"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    delete:
+      operationId: deleteUserPermissionGrant
+      tags: [User Permission Grants]
+      summary: Revoke (soft delete) a user permission grant
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/id"
+      responses:
+        "204":
+          description: User permission grant revoked
+        "404":
+          $ref: "#/components/responses/NotFound"
+
   /v1/organizations/{orgId}/entitlements:
     parameters:
       - $ref: "#/components/parameters/xRequestId"
@@ -2245,6 +2343,10 @@ components:
           default: active
         custom_attributes:
           type: object
+          description: >-
+            Free-form JSON object stored verbatim; never used for auth/authorization.
+            Convention keys for descriptive person data: first_name, last_name,
+            date_of_birth (YYYY-MM-DD). display_name stays the canonical name.
     UpdateUserInput:
       type: object
       properties:
@@ -2261,6 +2363,10 @@ components:
           enum: [active, inactive, suspended, pending, rejected]
         custom_attributes:
           type: object
+          description: >-
+            Free-form JSON object stored verbatim; never used for auth/authorization.
+            Convention keys for descriptive person data: first_name, last_name,
+            date_of_birth (YYYY-MM-DD). display_name stays the canonical name.
 
     FileUploadInput:
       type: object
@@ -2818,6 +2924,83 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/RoleAssignment"
+        meta:
+          type: object
+          properties:
+            pagination:
+              $ref: "#/components/schemas/Pagination"
+            request_id:
+              type: string
+              format: uuid
+            timestamp:
+              type: string
+              format: date-time
+
+    UserPermissionGrant:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        organization_id:
+          type: string
+          format: uuid
+        tenant_id:
+          type: string
+          format: uuid
+        product_id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+          format: uuid
+        permission_id:
+          type: string
+          format: uuid
+        effect:
+          type: string
+          enum: [ALLOW, DENY]
+        granted_by:
+          type: string
+          format: uuid
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+    CreateUserPermissionGrantInput:
+      type: object
+      required: [tenant_id, product_id, user_id, permission_id]
+      properties:
+        tenant_id:
+          type: string
+          format: uuid
+        product_id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+          format: uuid
+        permission_id:
+          type: string
+          format: uuid
+        effect:
+          type: string
+          enum: [ALLOW, DENY]
+          default: ALLOW
+    UserPermissionGrantResponse:
+      type: object
+      properties:
+        data:
+          $ref: "#/components/schemas/UserPermissionGrant"
+        meta:
+          $ref: "#/components/schemas/Meta"
+    UserPermissionGrantListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/UserPermissionGrant"
         meta:
           type: object
           properties:
