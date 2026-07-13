@@ -543,6 +543,47 @@ paths:
         "404":
           $ref: "#/components/responses/NotFound"
 
+  /v1/organizations/{orgId}/tenants/{tenantId}/users/by-permission:
+    parameters:
+      - $ref: "#/components/parameters/xRequestId"
+    get:
+      operationId: listUsersByPermission
+      tags: [Users]
+      summary: List users by effective permission
+      description: >-
+        Returns the tenant users who effectively hold ANY of the requested
+        permission keys within the product (repeat `permission` for OR),
+        considering both direct grants (effect ALLOW, not overridden by a direct
+        DENY) and role-derived permissions. Paginated.
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/tenantId"
+        - name: permission
+          in: query
+          required: true
+          schema:
+            type: array
+            items:
+              type: string
+          description: Permission key(s); repeat for OR (e.g. app.fsm.access).
+        - name: product_id
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - $ref: "#/components/parameters/limit"
+        - $ref: "#/components/parameters/offset"
+      responses:
+        "200":
+          description: List of users with the effective permission
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserListResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+
   /v1/organizations/{orgId}/tenants/{tenantId}/users/{id}:
     parameters:
       - $ref: "#/components/parameters/xRequestId"
