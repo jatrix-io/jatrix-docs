@@ -192,6 +192,12 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
+          id: "api/list-users-by-permission",
+          label: "List users by effective permission",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
           id: "api/get-user",
           label: "Get user by ID",
           className: "api-method get",
@@ -354,6 +360,40 @@ const sidebar: SidebarsConfig = {
           type: "doc",
           id: "api/delete-role-assignment",
           label: "Delete role assignment (soft delete)",
+          className: "api-method delete",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "User Permission Grants",
+      link: {
+        type: "doc",
+        id: "api/user-permission-grants",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "api/list-user-permission-grants",
+          label: "List user permission grants",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/create-user-permission-grant",
+          label: "Grant or deny a single permission to a user",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/get-user-permission-grant",
+          label: "Get a user permission grant by ID",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/delete-user-permission-grant",
+          label: "Revoke (soft delete) a user permission grant",
           className: "api-method delete",
         },
       ],
