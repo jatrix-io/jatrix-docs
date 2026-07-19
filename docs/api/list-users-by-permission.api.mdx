@@ -1,0 +1,69 @@
+---
+id: list-users-by-permission
+title: "List users by effective permission"
+description: "Returns the tenant users who effectively hold ANY of the requested permission keys within the product (repeat `permission` for OR), considering both direct grants (effect ALLOW, not overridden by a direct DENY) and role-derived permissions. Paginated."
+sidebar_label: "List users by effective permission"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "get api-method"
+info_path: docs/api/jatrix-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List users by effective permission"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/organizations/{orgId}/tenants/{tenantId}/users/by-permission"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns the tenant users who effectively hold ANY of the requested permission keys within the product (repeat `permission` for OR), considering both direct grants (effect ALLOW, not overridden by a direct DENY) and role-derived permissions. Paginated.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./list-users-by-permission.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./list-users-by-permission.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./list-users-by-permission.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

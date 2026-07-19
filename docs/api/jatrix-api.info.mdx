@@ -110,6 +110,33 @@ include `meta.pagination: { limit, offset, total }`. Errors use
           </tbody>
         </table>
       </div>
+    </TabItem><TabItem
+      label={"API Key: platformAdminAuth"}
+      value={"platformAdminAuth"}
+    >
+      
+      
+      Platform Admin API Key. Required for cross-organization operations, which span every organization on the platform and therefore cannot be scoped by the caller's own organization. Compared in constant time against PLATFORM_ADMIN_API_KEY. See 09-api-key-strategy.md.
+      
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <th>
+                Security Scheme Type:
+              </th><td>
+                apiKey
+              </td>
+            </tr><tr>
+              <th>
+                Header parameter name:
+              </th><td>
+                x-api-key
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </TabItem>
   </SchemaTabs>
 </div><div
