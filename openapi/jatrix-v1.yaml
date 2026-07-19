@@ -177,6 +177,11 @@ paths:
       operationId: listOrganizations
       tags: [Organizations]
       summary: List organizations
+      description: >-
+        Lists every organization on the platform. Requires the Platform Admin
+        API Key — a user JWT or Organization API Key receives 403.
+      security:
+        - platformAdminAuth: []
       parameters:
         - $ref: "#/components/parameters/limit"
         - $ref: "#/components/parameters/offset"
@@ -187,10 +192,17 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/OrganizationListResponse"
+        "403":
+          $ref: "#/components/responses/Forbidden"
     post:
       operationId: createOrganization
       tags: [Organizations]
       summary: Create organization
+      description: >-
+        Creates a top-level organization. Requires the Platform Admin API Key —
+        a user JWT or Organization API Key receives 403.
+      security:
+        - platformAdminAuth: []
       requestBody:
         required: true
         content:
@@ -206,6 +218,8 @@ paths:
                 $ref: "#/components/schemas/OrganizationResponse"
         "400":
           $ref: "#/components/responses/BadRequest"
+        "403":
+          $ref: "#/components/responses/Forbidden"
 
   /v1/organizations/{orgId}:
     parameters:
@@ -1889,6 +1903,15 @@ components:
       in: header
       name: x-api-key
       description: Organization API Key for service-to-service calls. Looked up by SHA-256 hash.
+    platformAdminAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: >-
+        Platform Admin API Key. Required for cross-organization operations,
+        which span every organization on the platform and therefore cannot be
+        scoped by the caller's own organization. Compared in constant time
+        against PLATFORM_ADMIN_API_KEY. See 09-api-key-strategy.md.
 
   parameters:
     xRequestId:
@@ -1957,6 +1980,12 @@ components:
   responses:
     BadRequest:
       description: Invalid input
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    Forbidden:
+      description: Authenticated but not permitted (error code FORBIDDEN)
       content:
         application/json:
           schema:
